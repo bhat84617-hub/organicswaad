@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { siteConfig } from "../data";
 import { MapPin, Phone, Mail } from "lucide-react";
 
