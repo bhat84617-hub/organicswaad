@@ -2,11 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Categories from "./components/Categories";
+import Features from "./components/Features";
+import WhyUs from "./components/WhyUs";
+import Testimonials from "./components/Testimonials";
+import Contact from "./components/Contact";
 import ProductsPage from "./components/ProductsPage";
 import ProductDetail from "./components/ProductDetail";
-import WhyUs from "./components/WhyUs";
-import MeeshoStore from "./components/MeeshoStore";
-import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import CartSidebar from "./components/CartSidebar";
 
@@ -16,7 +18,7 @@ function WhatsAppButton() {
       href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-300 hover:bg-green-600 hover:scale-110 transition-all duration-200 group"
+      className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-all duration-200 group"
       aria-label="Chat on WhatsApp"
     >
       <svg className="w-7 h-7 text-white group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor">
@@ -30,8 +32,11 @@ function Home() {
   return (
     <>
       <Hero />
+      <Features />
+      <Categories />
+      <ProductsPage />
       <WhyUs />
-      <MeeshoStore />
+      <Testimonials />
       <Contact />
     </>
   );
