@@ -38,7 +38,7 @@ export default function Header() {
 
         <div className="flex items-center gap-3">
           <a
-            href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
+            href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
             target="_blank"
             rel="noopener noreferrer"
             className="hidden sm:inline-flex items-center gap-2 bg-green-50 text-green-700 px-4 py-2 rounded-full text-sm font-medium border border-green-200 hover:bg-green-100 transition-colors"
@@ -86,7 +86,7 @@ export default function Header() {
               Contact
             </a>
             <a
-              href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!"
+              href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 flex items-center justify-center gap-2 bg-green-600 text-white py-3 rounded-xl font-medium"

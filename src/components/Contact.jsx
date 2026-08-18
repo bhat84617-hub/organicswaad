@@ -21,7 +21,7 @@ export default function Contact() {
 
         <div className="flex flex-wrap justify-center gap-5">
           <a
-            href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!%20Mujhe%20aapke%20masalon%20ke%20baare%20mein%20jaanna%20hai."
+            href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20aapke%20masalon%20ke%20baare%20mein%20jaanna%20hai."
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-4 bg-white px-8 py-5 rounded-2xl border border-gray-100 hover:border-green-300 hover:shadow-xl transition-all duration-300"

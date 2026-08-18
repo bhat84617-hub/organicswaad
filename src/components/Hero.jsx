@@ -31,7 +31,7 @@ export default function Hero() {
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
             <a
-              href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
+              href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 border border-gray-200 text-gray-700 px-8 py-4 rounded-full font-medium hover:border-green-300 hover:text-green-600 hover:bg-green-50 transition-all"

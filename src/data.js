@@ -1,7 +1,7 @@
 export const siteConfig = {
   brand: { name: "Pure Swad", tagline: "Shuddh masala, shuddh swad", logo: "🌿" },
   links: {
-    whatsapp: "https://wa.me/910000000000",
+    whatsapp: "https://wa.me/919759131256",
     instagram: "https://instagram.com",
   },
   address: "Pure Swad Spices, India",

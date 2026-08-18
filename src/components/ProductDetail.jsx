@@ -25,7 +25,7 @@ export default function ProductDetail() {
   const discount = Math.round((1 - product.price / product.originalPrice) * 100);
   const total = product.price * qty;
 
-  const whatsappUrl = `https://wa.me/910000000000?text=${encodeURIComponent(
+  const whatsappUrl = `https://wa.me/919759131256?text=${encodeURIComponent(
     `Hi Pure Swad! 👋\n\nMujhe yeh order karna hai:\n\n*${product.name}* (${product.hindiName})\nQuantity: ${qty}\nPrice: ₹${product.price} x ${qty} = ₹${total}\nWeight: ${product.weight}\n\nKripya delivery details bhejen. 🙏`
   )}`;
 

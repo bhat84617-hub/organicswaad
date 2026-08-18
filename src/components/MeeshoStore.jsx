@@ -1,7 +1,7 @@
 import { Truck, CreditCard, Shield, MessageCircle } from "lucide-react";
 
 export default function MeeshoStore() {
-  const whatsappUrl = "https://wa.me/910000000000?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20order%20karne%20hain.%20Kripya%20price%20list%20bhejen.";
+  const whatsappUrl = "https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20order%20karne%20hain.%20Kripya%20price%20list%20bhejen.";
 
   return (
     <section className="py-24 bg-gray-50 relative overflow-hidden">

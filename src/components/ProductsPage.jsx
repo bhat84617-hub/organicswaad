@@ -12,7 +12,7 @@ export default function ProductsPage() {
 
   const getWhatsAppUrl = (product) => {
     const msg = `Hi Pure Swad! 👋\n\nMujhe yeh order karna hai:\n\n*${product.name}* (${product.hindiName})\nPrice: ₹${product.price}\nWeight: ${product.weight}\n\nKripya delivery details bhejen. 🙏`;
-    return `https://wa.me/910000000000?text=${encodeURIComponent(msg)}`;
+    return `https://wa.me/919759131256?text=${encodeURIComponent(msg)}`;
   };
 
   return (

@@ -42,7 +42,7 @@ export default function Footer() {
             <h4 className="font-semibold text-gray-900 text-sm mb-4 uppercase tracking-wider">Order On</h4>
             <div className="space-y-3">
               <a
-                href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!"
+                href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2.5 bg-green-50 text-green-700 px-4 py-2.5 rounded-xl text-sm font-medium border border-green-200 hover:bg-green-100 transition-colors"

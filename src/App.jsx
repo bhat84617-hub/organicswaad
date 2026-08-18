@@ -13,7 +13,7 @@ import CartSidebar from "./components/CartSidebar";
 function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/910000000000?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
+      href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20masale%20ke%20baare%20mein%20jaanna%20hai."
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-40 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg shadow-green-300 hover:bg-green-600 hover:scale-110 transition-all duration-200 group"

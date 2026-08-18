@@ -5,7 +5,7 @@ export default function CartSidebar() {
   const { items, updateQty, removeItem, cartTotal, cartCount, open, setOpen } = useCart();
 
   const whatsappUrl = items.length > 0
-    ? `https://wa.me/910000000000?text=${encodeURIComponent(
+    ? `https://wa.me/919759131256?text=${encodeURIComponent(
         `Hi Pure Swad! 👋\n\nMujhe yeh order karna hai:\n\n${items.map((i) => `• ${i.name} (${i.hindiName}) x ${i.qty} = ₹${i.price * i.qty}`).join("\n")}\n\n*Total: ₹${cartTotal}*\n\nKripya delivery details bhejen. 🙏`
       )}`
     : "#";
