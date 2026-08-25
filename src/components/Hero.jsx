@@ -4,28 +4,58 @@ import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
   {
-    title: "100% Shuddh Masala",
-    subtitle: "Koi Milawat Nahi",
+    title: "100% Organic Masala",
+    subtitle: "Koi Chemical Nahi",
     desc: "Organic Swaad ke saath apne khaane mein lao asli Bharatiya swad. 100% organic spices seedha aapke ghar tak.",
     cta: "Abhi Order Karo",
     ctaLink: "/products",
     bg: "from-green-600 to-green-800",
+    image: "/organicswaadslide1.jpeg",
   },
   {
-    title: "Fresh Grinding",
-    subtitle: "Har Batch Taza",
-    desc: "Hamare masale hain taza aur pure. Koi artificial colors ya flavors nahi — sirf asli swad.",
-    cta: "Products Dekho",
+    title: "Organic Swaad",
+    subtitle: "Pure Taste, Pure Life",
+    desc: "Humara mission hai har ghar tak shudh organic masale pahunchna. Bina kisi milawat ke, sirf asli swad.",
+    cta: "Hamare Baare Mein",
     ctaLink: "/products",
     bg: "from-emerald-600 to-teal-700",
+    image: "/organicswaadslide2.jpeg",
   },
   {
-    title: "Free Delivery",
-    subtitle: "Poore India Mein",
-    desc: "Cash on Delivery available. Order karo aur ghar baithke paao premium masale.",
-    cta: "WhatsApp Pe Order",
+    title: "Complete Spice Collection",
+    subtitle: "Saare Masale Ek Jagah",
+    desc: "Haldi, lal mirch, dhaniya, jeera, garam masala — sab kuch organic aur ek jagah milega. Combo packs bhi available hain.",
+    cta: "Combos Dekho",
+    ctaLink: "/products",
+    bg: "from-green-700 to-emerald-800",
+    image: "/organicswaadslide3.jpeg",
+  },
+  {
+    title: "Har Masala Ki Apni Kahaani",
+    subtitle: "Premium Quality Spices",
+    desc: "Kisi bhi masale ka selection karo — har ek hai 100% organic, fresh grinding, aur chemical-free. Taste fark dekh lo.",
+    cta: "Products Dekho",
+    ctaLink: "/products",
+    bg: "from-emerald-700 to-green-800",
+    image: "/organicswaadslide4.jpeg",
+  },
+  {
+    title: "Special Combo Offers",
+    subtitle: "Bachao Aur Khareedo",
+    desc: "Combo packs mein khareedoge toh 30% tak bacha sakte ho. Family pack, starter pack, aur premium gift boxes available.",
+    cta: "Combo Packs Dekho",
+    ctaLink: "/products",
+    bg: "from-green-600 to-emerald-700",
+    image: "/orgnicswaadslide5.jpeg",
+  },
+  {
+    title: "Organic Khet Se Kitchen Tak",
+    subtitle: "Farm Fresh Quality",
+    desc: "Hamare masale seedha organic khet se aate hain. Koi middleman nahi, koi chemical nahi — sirf prakritik swad.",
+    cta: "Abhi Order Karo",
     ctaLink: "https://wa.me/919759131256?text=Hi%20Organic%20Swaad!",
-    bg: "from-green-700 to-green-900",
+    bg: "from-green-800 to-emerald-900",
+    image: "/organicswaadslide6.jpeg",
   },
 ];
 
@@ -45,7 +75,8 @@ export default function Hero() {
     <section className="relative min-h-[500px] md:min-h-[600px] pt-[104px] overflow-hidden">
       {/* Background */}
       <div className={`absolute inset-0 bg-gradient-to-r ${slide.bg} transition-all duration-700`}></div>
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }}></div>
+      <div className="absolute inset-0 bg-cover bg-center transition-all duration-700" style={{ backgroundImage: `url(${slide.image})` }}></div>
+      <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 flex items-center min-h-[400px] md:min-h-[500px]">
