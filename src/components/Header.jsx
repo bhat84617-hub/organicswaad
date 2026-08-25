@@ -60,7 +60,7 @@ export default function Header() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Organic Swaad" className="h-10 object-contain" />
+            <img src="/logoimageorganicswaad.jpeg" alt="Organic Swaad" className="h-10 object-contain" />
             <div>
               <span className="font-['Cormorant_Garamond'] text-xl font-bold text-green-700 block leading-tight">Organic Swaad</span>
               <span className="text-[10px] text-gray-400 tracking-wider uppercase">100% Organic Masala</span>

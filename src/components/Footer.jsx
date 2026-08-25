@@ -39,7 +39,7 @@ export default function Footer() {
           {/* About */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Organic Swaad" className="h-10 object-contain" />
+              <img src="/logoimageorganicswaad.jpeg" alt="Organic Swaad" className="h-10 object-contain" />
               <div>
                 <span className="font-['Cormorant_Garamond'] text-xl font-bold text-white">Organic Swaad</span>
                 <span className="block text-[10px] text-gray-400 tracking-wider uppercase">100% Organic Masala</span>
