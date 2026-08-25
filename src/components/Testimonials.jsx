@@ -1,12 +1,12 @@
 import useScrollReveal from "../hooks/useScrollReveal";
 
 const testimonials = [
-  { name: "Richa Sharma", text: "Pure Swad ke masale amazing hain! Ab humara monthly masala sirf yahan se aata hai. Quality aur swad dono ekdum best hain." },
-  { name: "Riya Jain", text: "Meri sahel ne mujhe Pure Swad suggest kiya. Ab mera poora kitchen inke masalon se bhara hai. Fresh aur pure — koi doubt nahi!" },
+  { name: "Richa Sharma", text: "Organic Swaad ke masale amazing hain! Ab humara monthly masala sirf yahan se aata hai. Quality aur swad dono ekdum best hain." },
+  { name: "Riya Jain", text: "Meri sahel ne mujhe Organic Swaad suggest kiya. Ab mera poora kitchen inke masalon se bhara hai. Fresh aur pure — koi doubt nahi!" },
   { name: "Supriya Agarwal", text: "Bangalore mein rehti hoon, Pahad se masala mangana ab possible hai. Taste bilkul waisa hai jaisa ghar ka bana hota hai." },
-  { name: "Ritesh Verma", text: "10 saal se JMC masale use karte the. Pure Swad se mila same quality aur better price. Ab sirf yahi se order karte hain." },
+  { name: "Ritesh Verma", text: "10 saal se JMC masale use karte the. Organic Swaad se mila same quality aur better price. Ab sirf yahi se order karte hain." },
   { name: "Reena Tondon", text: "Gurgaon se order kiya, next day delivery mil gayi. Prices competitive hain aur quality ekdum first class hai." },
-  { name: "Lakshmi Vijaya", text: "Pure aur fresh masale — 5 star! Ab monthly list mein sirf Pure Swad ka masala aata hai." },
+  { name: "Lakshmi Vijaya", text: "Pure aur fresh masale — 5 star! Ab monthly list mein sirf Organic Swaad ka masala aata hai." },
 ];
 
 export default function Testimonials() {

@@ -13,7 +13,7 @@ export default function ProductCard({ product }) {
   const saveAmount = product.originalPrice - product.price;
 
   const whatsappUrl = `https://wa.me/919759131256?text=${encodeURIComponent(
-    `Hi Pure Swad! 👋\n\nMujhe yeh order karna hai:\n\n*${product.name}* (${product.hindiName})\nQuantity: ${qty}\nPrice: ₹${product.price} x ${qty} = ₹${product.price * qty}\nWeight: ${product.weight}\n\nKripya delivery details bhejen. 🙏`
+    `Hi Organic Swaad! 👋\n\nMujhe yeh order karna hai:\n\n*${product.name}* (${product.hindiName})\nQuantity: ${qty}\nPrice: ₹${product.price} x ${qty} = ₹${product.price * qty}\nWeight: ${product.weight}\n\nKripya delivery details bhejen. 🙏`
   )}`;
 
   return (

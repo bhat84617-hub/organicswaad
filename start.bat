@@ -1,6 +1,6 @@
 @echo off
 echo.
-echo   Pure Swad - Starting Development Server...
+echo   Organic Swaad - Starting Development Server...
 echo   URL: http://localhost:5173
 echo.
 cd /d "%~dp0"

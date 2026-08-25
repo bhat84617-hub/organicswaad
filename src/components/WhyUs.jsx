@@ -16,7 +16,7 @@ export default function WhyUs() {
             Why Choose Us
           </span>
           <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Kyun Chuniye <span className="text-green-600">Pure Swad</span>?
+            Kyun Chuniye <span className="text-green-600">Organic Swaad</span>?
           </h2>
           <p className="text-gray-500 max-w-lg mx-auto">
             Hum sirf masala nahi, vishwas bechte hain. Har grain mein hai shuddhata.

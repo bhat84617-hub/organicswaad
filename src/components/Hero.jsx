@@ -6,7 +6,7 @@ const slides = [
   {
     title: "100% Shuddh Masala",
     subtitle: "Koi Milawat Nahi",
-    desc: "Pure Swad ke saath apne khaane mein lao asli Bharatiya swad. Premium quality spices seedha aapke ghar tak.",
+    desc: "Organic Swaad ke saath apne khaane mein lao asli Bharatiya swad. 100% organic spices seedha aapke ghar tak.",
     cta: "Abhi Order Karo",
     ctaLink: "/products",
     bg: "from-green-600 to-green-800",
@@ -24,7 +24,7 @@ const slides = [
     subtitle: "Poore India Mein",
     desc: "Cash on Delivery available. Order karo aur ghar baithke paao premium masale.",
     cta: "WhatsApp Pe Order",
-    ctaLink: "https://wa.me/919759131256?text=Hi%20Pure%20Swad!",
+    ctaLink: "https://wa.me/919759131256?text=Hi%20Organic%20Swaad!",
     bg: "from-green-700 to-green-900",
   },
 ];

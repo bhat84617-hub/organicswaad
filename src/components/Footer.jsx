@@ -39,14 +39,14 @@ export default function Footer() {
           {/* About */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/logo.png" alt="Pure Swad" className="h-10 object-contain" />
+              <img src="/logo.png" alt="Organic Swaad" className="h-10 object-contain" />
               <div>
-                <span className="font-['Cormorant_Garamond'] text-xl font-bold text-white">Pure Swad</span>
-                <span className="block text-[10px] text-gray-400 tracking-wider uppercase">100% Shuddh Masala</span>
+                <span className="font-['Cormorant_Garamond'] text-xl font-bold text-white">Organic Swaad</span>
+                <span className="block text-[10px] text-gray-400 tracking-wider uppercase">100% Organic Masala</span>
               </div>
             </div>
             <p className="text-sm leading-relaxed text-gray-400 max-w-sm mb-4">
-              Pure Swad is your one-stop online store for 100% pure Indian spices. We deliver the freshest, highest quality spices directly to your doorstep. No middlemen, no compromise.
+              Organic Swaad is your one-stop online store for 100% organic Indian spices. We deliver the freshest, highest quality organic spices directly to your doorstep. No chemicals, no compromise.
             </p>
             <div className="flex gap-3">
               <a href="#" className="w-9 h-9 bg-gray-800 hover:bg-green-600 rounded-full flex items-center justify-center transition-colors text-sm">FB</a>
@@ -73,7 +73,7 @@ export default function Footer() {
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-                <span>Pure Swad Spices, India</span>
+                <span>Organic Swaad Spices, India</span>
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-green-500 flex-shrink-0" />
@@ -81,7 +81,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-green-500 flex-shrink-0" />
-                <a href="mailto:pureswad@gmail.com" className="hover:text-green-400 transition-colors">pureswad@gmail.com</a>
+                <a href="mailto:organicswaad@gmail.com" className="hover:text-green-400 transition-colors">organicswaad@gmail.com</a>
               </div>
             </div>
           </div>

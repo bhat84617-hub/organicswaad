@@ -6,7 +6,7 @@ export default function CartSidebar() {
 
   const whatsappUrl = items.length > 0
     ? `https://wa.me/919759131256?text=${encodeURIComponent(
-        `Hi Pure Swad! 👋\n\nMujhe yeh order karna hai:\n\n${items.map((i) => `• ${i.name} (${i.hindiName}) x ${i.qty} = ₹${i.price * i.qty}`).join("\n")}\n\n*Total: ₹${cartTotal}*\n\nKripya delivery details bhejen. 🙏`
+        `Hi Organic Swaad! 👋\n\nMujhe yeh order karna hai:\n\n${items.map((i) => `• ${i.name} (${i.hindiName}) x ${i.qty} = ₹${i.price * i.qty}`).join("\n")}\n\n*Total: ₹${cartTotal}*\n\nKripya delivery details bhejen. 🙏`
       )}`
     : "#";
 

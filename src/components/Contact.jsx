@@ -21,7 +21,7 @@ export default function Contact() {
 
         <div className="flex flex-wrap justify-center gap-5">
           <a
-            href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!%20Mujhe%20aapke%20masalon%20ke%20baare%20mein%20jaanna%20hai."
+            href="https://wa.me/919759131256?text=Hi%20Organic%20Swaad!%20Mujhe%20aapke%20masalon%20ke%20baare%20mein%20jaanna%20hai."
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center gap-4 bg-white px-8 py-5 rounded-2xl border border-gray-100 hover:border-green-300 hover:shadow-xl transition-all duration-300"
@@ -36,7 +36,7 @@ export default function Contact() {
           </a>
 
           <a
-            href="mailto:pureswad@gmail.com"
+            href="mailto:organicswaad@gmail.com"
             className="group flex items-center gap-4 bg-white px-8 py-5 rounded-2xl border border-gray-100 hover:border-green-300 hover:shadow-xl transition-all duration-300"
           >
             <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center group-hover:bg-green-100 transition-colors">
@@ -44,7 +44,7 @@ export default function Contact() {
             </div>
             <div className="text-left">
               <p className="font-semibold text-gray-900 group-hover:text-green-600 transition-colors">Email</p>
-              <p className="text-sm text-gray-400">pureswad@gmail.com</p>
+              <p className="text-sm text-gray-400">organicswaad@gmail.com</p>
             </div>
           </a>
         </div>

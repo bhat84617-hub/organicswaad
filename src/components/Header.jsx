@@ -16,7 +16,7 @@ export default function Header() {
           <div className="flex items-center gap-4">
             <span>📞 +91-9759131256</span>
             <span className="hidden sm:inline">|</span>
-            <span className="hidden sm:inline">📧 pureswad@gmail.com</span>
+            <span className="hidden sm:inline">📧 organicswaad@gmail.com</span>
           </div>
           <div className="flex items-center gap-3">
             <a href="#" className="hover:text-green-200 transition-colors">FB</a>
@@ -60,10 +60,10 @@ export default function Header() {
 
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <img src="/logo.png" alt="Pure Swad" className="h-10 object-contain" />
+            <img src="/logo.png" alt="Organic Swaad" className="h-10 object-contain" />
             <div>
-              <span className="font-['Cormorant_Garamond'] text-xl font-bold text-green-700 block leading-tight">Pure Swad</span>
-              <span className="text-[10px] text-gray-400 tracking-wider uppercase">100% Shuddh Masala</span>
+              <span className="font-['Cormorant_Garamond'] text-xl font-bold text-green-700 block leading-tight">Organic Swaad</span>
+              <span className="text-[10px] text-gray-400 tracking-wider uppercase">100% Organic Masala</span>
             </div>
           </Link>
 
@@ -115,7 +115,7 @@ export default function Header() {
             <a href="#testimonials" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg">Reviews</a>
             <a href="#contact" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-green-50 hover:text-green-600 rounded-lg">Contact</a>
             <a
-              href="https://wa.me/919759131256?text=Hi%20Pure%20Swad!"
+              href="https://wa.me/919759131256?text=Hi%20Organic%20Swaad!"
               target="_blank"
               rel="noopener noreferrer"
               className="block py-2.5 px-3 text-sm font-medium bg-green-600 text-white rounded-lg text-center mt-3"
