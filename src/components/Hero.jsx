@@ -72,73 +72,82 @@ export default function Hero() {
   const slide = slides[current];
 
   return (
-    <section className="relative min-h-[500px] md:min-h-[600px] pt-[104px] overflow-hidden">
-      {/* Background */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${slide.bg} transition-all duration-700`}></div>
-      <div className="absolute inset-0 bg-cover bg-center transition-all duration-700" style={{ backgroundImage: `url(${slide.image})` }}></div>
-      <div className="absolute inset-0 bg-black/40"></div>
+    <section className="relative pt-[88px] overflow-hidden bg-black">
+      {/* Image as <img> so slide height = image height, no cropping (object-contain) */}
+      <div className="relative w-full">
+        <img
+          key={current}
+          src={slide.image}
+          alt={slide.title}
+          className="w-full h-auto block object-contain transition-all duration-700"
+        />
+        {/* Dark overlay for text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
 
-      {/* Content */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24 flex items-center min-h-[400px] md:min-h-[500px]">
-        <div className="max-w-2xl text-white" key={current}>
-          <span className="inline-block bg-white/20 text-white text-xs font-semibold px-4 py-1.5 rounded-full mb-4 uppercase tracking-wider backdrop-blur-sm">
-            {slide.subtitle}
-          </span>
-          <h1 className="font-['Cormorant_Garamond'] text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight">
-            {slide.title}
-          </h1>
-          <p className="text-white/80 text-lg mb-8 max-w-lg leading-relaxed">
-            {slide.desc}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            {slide.ctaLink.startsWith("http") ? (
-              <a
-                href={slide.ctaLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group inline-flex items-center gap-2 bg-white text-green-700 px-8 py-3.5 rounded-full font-semibold hover:bg-green-50 transition-all shadow-lg"
-              >
-                {slide.cta}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </a>
-            ) : (
-              <Link
-                to={slide.ctaLink}
-                className="group inline-flex items-center gap-2 bg-white text-green-700 px-8 py-3.5 rounded-full font-semibold hover:bg-green-50 transition-all shadow-lg"
-              >
-                {slide.cta}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-            )}
+        {/* Content - absolutely centered over image */}
+        <div className="absolute inset-0 flex items-center">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-4 sm:py-6 md:py-12">
+            <div className="max-w-2xl text-white" key={current}>
+              <span className="inline-block bg-white/20 text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-2 sm:mb-4 uppercase tracking-wider backdrop-blur-sm">
+                {slide.subtitle}
+              </span>
+              <h1 className="font-['Cormorant_Garamond'] text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
+                {slide.title}
+              </h1>
+              <p className="text-white/80 text-sm sm:text-base md:text-lg mb-4 sm:mb-8 max-w-lg leading-relaxed line-clamp-2 sm:line-clamp-none">
+                {slide.desc}
+              </p>
+              <div className="flex flex-wrap gap-4">
+                {slide.ctaLink.startsWith("http") ? (
+                  <a
+                    href={slide.ctaLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
+                  >
+                    {slide.cta}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </a>
+                ) : (
+                  <Link
+                    to={slide.ctaLink}
+                    className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
+                  >
+                    {slide.cta}
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                )}
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={() => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
-      >
-        <ChevronLeft className="w-5 h-5" />
-      </button>
-      <button
-        onClick={() => setCurrent((prev) => (prev + 1) % slides.length)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
-      >
-        <ChevronRight className="w-5 h-5" />
-      </button>
+        {/* Navigation Arrows */}
+        <button
+          onClick={() => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)}
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+        >
+          <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+        </button>
+        <button
+          onClick={() => setCurrent((prev) => (prev + 1) % slides.length)}
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+        >
+          <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+        </button>
 
-      {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
-        {slides.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            className={`w-2.5 h-2.5 rounded-full transition-all ${
-              i === current ? "bg-white w-8" : "bg-white/40"
-            }`}
-          />
-        ))}
+        {/* Dots */}
+        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrent(i)}
+              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                i === current ? "bg-white w-8" : "bg-white/40"
+              }`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
