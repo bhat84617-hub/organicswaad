@@ -12,7 +12,7 @@ export default function ProductDetail() {
 
   if (!product) {
     return (
-      <section className="min-h-screen bg-white pt-24 flex items-center justify-center">
+      <section className="min-h-screen bg-white pt-[140px] lg:pt-[190px] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Product Not Found</h1>
           <Link to="/products" className="text-green-600 hover:underline">← Wapas Products Pe Jao</Link>
@@ -30,7 +30,7 @@ export default function ProductDetail() {
   )}`;
 
   return (
-    <section className="min-h-screen bg-white pt-24 pb-16">
+    <section className="min-h-screen bg-white pt-[140px] lg:pt-[190px] pb-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <Link
           to="/products"
@@ -41,10 +41,11 @@ export default function ProductDetail() {
         </Link>
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
-          <div className="bg-gradient-to-br from-gray-50 to-green-50/30 rounded-3xl border border-gray-100 p-8 sm:p-12 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute top-4 right-4 bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-sm">
+          <div className="relative">
+            <div className="absolute top-3 right-3 z-10 bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
               {discount}% OFF
             </div>
+            <div className="bg-gradient-to-br from-gray-50 to-green-50/30 rounded-3xl border border-gray-100 p-8 sm:p-12 flex items-center justify-center overflow-hidden">
             {product.image ? (
               <img
                 src={product.image}
@@ -54,6 +55,7 @@ export default function ProductDetail() {
             ) : (
               <div className="text-[100px] opacity-20 animate-float">🌿</div>
             )}
+            </div>
           </div>
 
           <div className="space-y-6">

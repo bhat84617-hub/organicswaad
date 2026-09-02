@@ -1,12 +1,40 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useMemo } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { products, categories } from "../data";
 import ProductCard from "./ProductCard";
 
+function normalize(str) {
+  return str.toLowerCase().replace(/aa/g, "a").replace(/ee/g, "i").replace(/\s+/g, "");
+}
+
 export default function ProductsPage() {
   const [active, setActive] = useState("All");
+  const [searchParams] = useSearchParams();
+  const urlSearch = searchParams.get("search") || "";
+  const urlCategory = searchParams.get("category") || "";
 
-  const filtered = active === "All" ? products : products.filter((p) => p.category === active);
+  const filtered = useMemo(() => {
+    let list = products;
+    if (urlCategory) {
+      const catMap = { "single-spice": "Single Spice", blend: "Blend", combo: "Combo" };
+      const mapped = catMap[urlCategory] || urlCategory;
+      list = list.filter((p) => p.category === mapped || p.category.toLowerCase().includes(mapped.toLowerCase()));
+    } else if (active !== "All") {
+      list = list.filter((p) => p.category === active);
+    }
+    if (urlSearch.trim()) {
+      const q = urlSearch.toLowerCase().trim();
+      const qNorm = normalize(q);
+      list = list.filter((p) => {
+        const name = p.name.toLowerCase();
+        const hindi = (p.hindiName || "").toLowerCase();
+        const tag = (p.tagline || "").toLowerCase();
+        const cat = (p.category || "").toLowerCase();
+        return name.includes(q) || hindi.includes(q) || tag.includes(q) || cat.includes(q) || normalize(p.name).includes(qNorm) || normalize(p.hindiName || "").includes(qNorm);
+      });
+    }
+    return list;
+  }, [active, urlSearch, urlCategory]);
 
   return (
     <section className="py-10 bg-white" id="all-products">
@@ -69,9 +97,15 @@ export default function ProductsPage() {
           </Link>
         </div>
 
+        {urlSearch && (
+          <div className="mb-4 text-sm text-gray-500">
+            Search results for "<b className="text-[#1a1a1a]">{urlSearch}</b>" — {filtered.length} product{filtered.length !== 1 ? "s" : ""} found
+          </div>
+        )}
+
         {filtered.length === 0 && (
           <div className="text-center py-16">
-            <p className="text-gray-400 text-lg">Koi product nahi mila is category mein.</p>
+            <p className="text-gray-400 text-lg">Koi product nahi mila {urlSearch ? `"${urlSearch}"` : "is category"} mein.</p>
           </div>
         )}
       </div>
