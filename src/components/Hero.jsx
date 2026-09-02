@@ -3,6 +3,17 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
+  // NEW TEST SLIDE - isme already design me text hai isliye overlay text hide kiya hai
+  {
+    title: "Asli Garam Masala",
+    subtitle: "Asli Swaad!",
+    desc: "Shuddh, swachh aur behtareen garam masala powder - jo laaye har dish mein laajawaab swaad.",
+    cta: "Abhi Order Karo",
+    ctaLink: "/products",
+    bg: "from-amber-800 to-yellow-900",
+    image: "/newslideimage.png",
+    hideContent: true,
+  },
   {
     title: "100% Organic Masala",
     subtitle: "Koi Chemical Nahi",
@@ -73,78 +84,121 @@ export default function Hero() {
 
   return (
     <section className="relative pt-[88px] overflow-hidden bg-black">
-      {/* Image as <img> so slide height = image height, no cropping (object-contain) */}
-      <div className="relative w-full">
-        <img
-          key={current}
-          src={slide.image}
-          alt={slide.title}
-          className="w-full h-auto block object-contain transition-all duration-700"
-        />
-        {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40"></div>
+      {/* Stable aspect container - bhagne/blink fix, no layout shift */}
+      <div className="relative w-full aspect-[1672/941] max-h-[600px] bg-black overflow-hidden">
+        {/* All slides stacked with opacity fade - no blink, no key remount */}
+        {slides.map((s, i) => (
+          <div
+            key={i}
+            className={`absolute inset-0 transition-opacity duration-700 ease-in-out ${
+              i === current ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+          >
+            <img
+              src={s.image}
+              alt={s.title}
+              className="w-full h-full object-contain object-center block bg-black"
+              loading={i === 0 ? "eager" : "lazy"}
+              draggable={false}
+            />
+            {/* Dark overlay - lighter for new image which already has text */}
+            {!s.hideContent && <div className="absolute inset-0 bg-black/40"></div>}
+          </div>
+        ))}
 
-        {/* Content - absolutely centered over image */}
-        <div className="absolute inset-0 flex items-center">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-4 sm:py-6 md:py-12">
-            <div className="max-w-2xl text-white" key={current}>
-              <span className="inline-block bg-white/20 text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-2 sm:mb-4 uppercase tracking-wider backdrop-blur-sm">
-                {slide.subtitle}
-              </span>
-              <h1 className="font-['Cormorant_Garamond'] text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
-                {slide.title}
-              </h1>
-              <p className="text-white/80 text-sm sm:text-base md:text-lg mb-4 sm:mb-8 max-w-lg leading-relaxed line-clamp-2 sm:line-clamp-none">
-                {slide.desc}
-              </p>
-              <div className="flex flex-wrap gap-4">
-                {slide.ctaLink.startsWith("http") ? (
-                  <a
-                    href={slide.ctaLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
-                  >
-                    {slide.cta}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </a>
-                ) : (
-                  <Link
-                    to={slide.ctaLink}
-                    className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
-                  >
-                    {slide.cta}
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                  </Link>
-                )}
+        {/* Content - only show if not hideContent, no key to prevent blink */}
+        {!slide.hideContent && (
+          <div className="absolute inset-0 z-20 flex items-center pointer-events-none">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 w-full py-4 sm:py-6 md:py-12">
+              <div className="max-w-2xl text-white">
+                <span className="inline-block bg-white/20 text-white text-[10px] sm:text-xs font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full mb-2 sm:mb-4 uppercase tracking-wider backdrop-blur-sm">
+                  {slide.subtitle}
+                </span>
+                <h1 className="font-['Cormorant_Garamond'] text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 sm:mb-4 leading-tight">
+                  {slide.title}
+                </h1>
+                <p className="text-white/80 text-sm sm:text-base md:text-lg mb-4 sm:mb-8 max-w-lg leading-relaxed line-clamp-2 sm:line-clamp-none">
+                  {slide.desc}
+                </p>
+                <div className="flex flex-wrap gap-4 pointer-events-auto">
+                  {slide.ctaLink.startsWith("http") ? (
+                    <a
+                      href={slide.ctaLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
+                    >
+                      {slide.cta}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  ) : (
+                    <Link
+                      to={slide.ctaLink}
+                      className="group inline-flex items-center gap-2 bg-white text-green-700 px-5 sm:px-8 py-2.5 sm:py-3.5 rounded-full font-semibold text-sm sm:text-base hover:bg-green-50 transition-all shadow-lg"
+                    >
+                      {slide.cta}
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
+
+        {/* For hideContent slide - still show minimal CTA centered bottom if needed - optional */}
+        {slide.hideContent && (
+          <div className="absolute inset-0 z-20 flex items-end justify-center pb-8 sm:pb-12 pointer-events-none">
+            <div className="pointer-events-auto">
+              {slide.ctaLink.startsWith("http") ? (
+                <a
+                  href={slide.ctaLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hidden sm:inline-flex items-center gap-2 bg-white text-green-700 px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-green-50 transition-all shadow-lg"
+                >
+                  {slide.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </a>
+              ) : (
+                <Link
+                  to={slide.ctaLink}
+                  className="hidden sm:inline-flex items-center gap-2 bg-white text-green-700 px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-green-50 transition-all shadow-lg"
+                >
+                  {slide.cta}
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Navigation Arrows */}
         <button
           onClick={() => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)}
-          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+          className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+          aria-label="Previous slide"
         >
           <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
         <button
           onClick={() => setCurrent((prev) => (prev + 1) % slides.length)}
-          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+          className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full flex items-center justify-center text-white transition-all"
+          aria-label="Next slide"
         >
           <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
         </button>
 
         {/* Dots */}
-        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+        <div className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-30 flex gap-2">
           {slides.map((_, i) => (
             <button
               key={i}
               onClick={() => setCurrent(i)}
-              className={`w-2.5 h-2.5 rounded-full transition-all ${
-                i === current ? "bg-white w-8" : "bg-white/40"
+              className={`h-2.5 rounded-full transition-all ${
+                i === current ? "bg-white w-8" : "bg-white/40 w-2.5 hover:bg-white/60"
               }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
