@@ -15,6 +15,16 @@ const slides = [
     hideContent: true,
   },
   {
+    title: "Asli Garam Masala - New",
+    subtitle: "Asli Swaad!",
+    desc: "Shuddh, swachh aur behtareen garam masala powder - jo laaye har dish mein laajawaab swaad.",
+    cta: "Abhi Order Karo",
+    ctaLink: "/products",
+    bg: "from-amber-800 to-yellow-900",
+    image: "/newslideimage1.png",
+    hideContent: true,
+  },
+  {
     title: "100% Organic Masala",
     subtitle: "Koi Chemical Nahi",
     desc: "Organic Swaad ke saath apne khaane mein lao asli Bharatiya swad. 100% organic spices seedha aapke ghar tak.",
