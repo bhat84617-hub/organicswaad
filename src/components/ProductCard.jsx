@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { ShoppingCart, Heart, Minus, Plus, Check, MessageCircle } from "lucide-react";
+import { ShoppingCart, Heart, Minus, Plus, Check, MessageCircle, Star, Eye } from "lucide-react";
 
 export default function ProductCard({ product }) {
   const { addItem, items } = useCart();
@@ -17,10 +17,10 @@ export default function ProductCard({ product }) {
   )}`;
 
   return (
-    <div className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-lg hover:border-green-200 transition-all duration-300">
-      {/* Image */}
+    <div className="group bg-white border border-gray-100 overflow-hidden hover:shadow-lg hover:border-gray-200 transition-all duration-300 flex flex-col">
+      {/* Image - XStore style */}
       <Link to={`/product/${product.slug}`} className="block relative">
-        <div className="relative h-52 bg-gray-50 flex items-center justify-center p-4 overflow-hidden">
+        <div className="relative aspect-square bg-[#f9f9f9] flex items-center justify-center p-6 overflow-hidden">
           {product.image ? (
             <img
               src={product.image}
@@ -31,87 +31,89 @@ export default function ProductCard({ product }) {
             <span className="text-6xl opacity-30">🌿</span>
           )}
 
-          {/* SALE Badge */}
+          {/* SALE Badge - XStore red */}
           {discount > 0 && (
-            <div className="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2.5 py-1 rounded">
-              SALE
-            </div>
+            <div className="absolute top-3 left-3 bg-[#e53935] text-white text-[10px] font-bold px-2 py-1 leading-none">-{discount}%</div>
           )}
 
-          {/* Wishlist */}
+          {/* Wishlist - XStore top right */}
           <button
-            onClick={(e) => { e.preventDefault(); setLiked(!liked); }}
-            className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full shadow-sm flex items-center justify-center hover:bg-red-50 transition-colors"
+            onClick={(e) => {
+              e.preventDefault();
+              setLiked(!liked);
+            }}
+            className="absolute top-3 right-3 w-7 h-7 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-50 transition-colors"
           >
-            <Heart className={`w-4 h-4 ${liked ? "fill-red-500 text-red-500" : "text-gray-400"}`} />
+            <Heart className={`w-3.5 h-3.5 ${liked ? "fill-[#e53935] text-[#e53935]" : "text-gray-400"}`} />
           </button>
+
+          {/* Quick shop eye - XStore center on hover */}
+          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100">
+            <span className="bg-white text-[#1a1a1a] text-xs font-semibold px-4 py-1.5 rounded-full shadow flex items-center gap-1.5">
+              <Eye className="w-3.5 h-3.5" /> Quick Shop
+            </span>
+          </div>
         </div>
       </Link>
 
-      {/* Info */}
-      <div className="p-4">
+      {/* Info - XStore */}
+      <div className="p-3 flex-1 flex flex-col">
+        {/* Category */}
+        <p className="text-[11px] tracking-wide uppercase text-gray-400 font-medium">{product.category || "Spices"}</p>
         <Link to={`/product/${product.slug}`}>
-          <h3 className="font-semibold text-gray-800 text-sm mb-1 group-hover:text-green-600 transition-colors line-clamp-1">
+          <h3 className="font-medium text-[#1a1a1a] text-sm leading-tight mt-0.5 group-hover:text-[#16a34a] transition-colors line-clamp-2 min-h-[36px]">
             {product.name}
           </h3>
         </Link>
-        <p className="text-xs text-gray-400 mb-2">{product.hindiName}</p>
-
-        {/* Price */}
-        <div className="flex items-baseline gap-2 mb-1">
-          <span className="text-lg font-bold text-green-700">Rs.{product.price}</span>
-          <span className="text-sm text-gray-400 line-through">Rs.{product.originalPrice}</span>
+        {/* Stars - XStore */}
+        <div className="flex items-center gap-1 mt-1.5">
+          <div className="flex text-[#ffb800]">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-3 h-3 fill-[#ffb800] text-[#ffb800]" />
+            ))}
+          </div>
+          <span className="text-xs text-gray-400">(24)</span>
         </div>
-        <div className="flex items-center gap-2 mb-3">
-          <span className="text-xs text-green-600 font-medium">Save Rs.{saveAmount}</span>
-          <span className="text-xs text-red-500 font-semibold">Discount ({discount}%)</span>
+
+        {/* Price - XStore */}
+        <div className="flex items-baseline gap-2 mt-2">
+          <span className="text-[15px] font-bold text-[#1a1a1a]">₹{product.price}</span>
+          <span className="text-xs text-gray-400 line-through">₹{product.originalPrice}</span>
         </div>
 
         {/* Weight */}
-        <p className="text-xs text-gray-500 mb-3">{product.weight}</p>
+        <p className="text-xs text-gray-400 mt-1">{product.weight}</p>
 
-        {/* Quantity + Add to Cart */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center border border-gray-200 rounded-lg overflow-hidden">
-            <button
-              onClick={() => setQty(Math.max(1, qty - 1))}
-              className="w-8 h-8 flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
+        {/* Quantity + Add to Cart - XStore */}
+        <div className="flex items-center gap-1.5 mt-3">
+          <div className="flex items-center border border-gray-200 rounded overflow-hidden h-8">
+            <button onClick={() => setQty(Math.max(1, qty - 1))} className="w-7 h-full flex items-center justify-center hover:bg-gray-50">
               <Minus className="w-3 h-3 text-gray-500" />
             </button>
-            <span className="w-8 h-8 flex items-center justify-center text-sm font-medium text-gray-800 border-x border-gray-100">
-              {qty}
-            </span>
-            <button
-              onClick={() => setQty(qty + 1)}
-              className="w-8 h-8 flex items-center justify-center hover:bg-gray-50 transition-colors"
-            >
+            <span className="w-7 h-full flex items-center justify-center text-xs font-medium text-[#1a1a1a] border-x border-gray-100">{qty}</span>
+            <button onClick={() => setQty(qty + 1)} className="w-7 h-full flex items-center justify-center hover:bg-gray-50">
               <Plus className="w-3 h-3 text-gray-500" />
             </button>
           </div>
-
           <button
             onClick={() => addItem(product, qty)}
-            className={`flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg text-xs font-semibold transition-all ${
-              inCart
-                ? "bg-green-50 text-green-700 border border-green-200"
-                : "bg-green-600 text-white hover:bg-green-700"
+            className={`flex-1 flex items-center justify-center gap-1 py-2 text-xs font-semibold transition-all h-8 rounded ${
+              inCart ? "bg-[#f0fdf4] text-[#16a34a] border border-[#bbf7d0]" : "bg-[#1a1a1a] text-white hover:bg-black"
             }`}
           >
-            {inCart ? <Check className="w-3.5 h-3.5" /> : <ShoppingCart className="w-3.5 h-3.5" />}
+            {inCart ? <Check className="w-3 h-3" /> : <ShoppingCart className="w-3 h-3" />}
             {inCart ? "Added" : "Add to Cart"}
           </button>
         </div>
 
-        {/* WhatsApp Order */}
+        {/* WhatsApp - XStore subtle */}
         <a
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-2 flex items-center justify-center gap-1.5 w-full py-2 rounded-lg text-xs font-semibold border border-green-200 text-green-700 hover:bg-green-50 transition-all"
+          className="mt-1.5 flex items-center justify-center gap-1 w-full py-1.5 rounded text-[11px] font-medium border border-gray-200 text-[#1a1a1a] hover:bg-gray-50 transition-all"
         >
-          <MessageCircle className="w-3.5 h-3.5" />
-          WhatsApp Pe Order
+          <MessageCircle className="w-3 h-3" /> WhatsApp
         </a>
       </div>
     </div>

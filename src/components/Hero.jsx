@@ -83,9 +83,11 @@ export default function Hero() {
   const slide = slides[current];
 
   return (
-    <section className="relative pt-[88px] overflow-hidden bg-black">
-      {/* Stable aspect container - bhagne/blink fix, no layout shift */}
-      <div className="relative w-full aspect-[1672/941] max-h-[600px] bg-black overflow-hidden">
+    <section className="relative pt-[124px] lg:pt-[180px] overflow-hidden bg-[#f5f5f5]">
+      {/* XStore layout: slider + 2 side banners */}
+      <div className="max-w-[1440px] mx-auto px-4 py-4 grid lg:grid-cols-[1fr_320px] gap-4">
+        {/* Slider */}
+        <div className="relative w-full aspect-[1672/941] max-h-[520px] bg-black overflow-hidden rounded lg:rounded-lg">
         {/* All slides stacked with opacity fade - no blink, no key remount */}
         {slides.map((s, i) => (
           <div
@@ -201,6 +203,27 @@ export default function Hero() {
               aria-label={`Go to slide ${i + 1}`}
             />
           ))}
+        </div>
+        </div>
+
+        {/* XStore Side Banners - 2 promo blocks */}
+        <div className="hidden lg:flex flex-col gap-4">
+          <Link to="/products" className="relative flex-1 bg-gradient-to-br from-[#fef3c7] to-[#fde68a] rounded-lg overflow-hidden p-6 flex flex-col justify-center min-h-[252px] group">
+            <span className="text-xs font-bold tracking-widest text-[#92400e] uppercase">Festival Offer</span>
+            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold text-[#78350f] mt-1">Contemporary Wall</h3>
+            <p className="text-sm text-[#92400e] mt-1">Now at ₹60 only</p>
+            <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-[#78350f] group-hover:gap-2 transition-all">
+              SHOP NOW <ArrowRight className="w-4 h-4" />
+            </span>
+            <img src="/organicswaadproductgarammashala.jpeg" alt="" className="absolute right-2 bottom-2 w-28 h-28 object-contain opacity-90 group-hover:scale-105 transition-transform" />
+          </Link>
+          <Link to="/products?category=combo" className="relative flex-1 bg-[#1a1a1a] rounded-lg overflow-hidden p-6 flex flex-col justify-center min-h-[252px] group text-white">
+            <span className="text-xs font-bold tracking-widest text-[#22c55e] uppercase">45% Flat</span>
+            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold mt-1">Decor Pieces</h3>
+            <p className="text-xs text-white/60 mt-1">Ultra HD Light • Platinum</p>
+            <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold group-hover:gap-2 transition-all">VIEW DETAILS <ArrowRight className="w-4 h-4" /></span>
+            <img src="/organicswaadproducthaldipowder.jpeg" alt="" className="absolute right-2 bottom-2 w-28 h-28 object-contain opacity-80 group-hover:scale-105 transition-transform" />
+          </Link>
         </div>
       </div>
     </section>

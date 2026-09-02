@@ -2,38 +2,51 @@ import { Link } from "react-router-dom";
 import useScrollReveal from "../hooks/useScrollReveal";
 
 const categories = [
-  { name: "Powdered Spices", slug: "single-spice", emoji: "🌿", color: "from-amber-50 to-orange-50" },
-  { name: "Blended Spices", slug: "blend", emoji: "🍛", color: "from-green-50 to-emerald-50" },
-  { name: "Whole Spices", slug: "single-spice", emoji: "🌰", color: "from-yellow-50 to-amber-50" },
-  { name: "Combo Packs", slug: "combo", emoji: "🎁", color: "from-red-50 to-pink-50" },
+  { name: "Powdered Spices", slug: "single-spice", count: 12, img: "/organicswaadproducthaldipowder.jpeg" },
+  { name: "Blended Spices", slug: "blend", count: 8, img: "/organicswaadproductgarammashala.jpeg" },
+  { name: "Whole Spices", slug: "single-spice", count: 10, img: "/organicswaadproductjeerapowder.jpeg" },
+  { name: "Combo Packs", slug: "combo", count: 6, img: "/organicswaadproductimagedhaniyapowder.jpeg" },
+  { name: "Seeds & Herbs", slug: "single-spice", count: 5, img: "/organicswaadproductmirchipowder.jpeg" },
+  { name: "Offers", slug: "combo", count: 3, img: "/organicswaadproductgarammashala.jpeg" },
 ];
 
 export default function Categories() {
   const ref = useScrollReveal();
 
   return (
-    <section id="categories" className="py-16 bg-white">
-      <div ref={ref} className="reveal max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="text-center mb-12">
-          <span className="text-green-600 text-sm font-semibold uppercase tracking-wider">Browse</span>
-          <h2 className="font-['Cormorant_Garamond'] text-3xl md:text-4xl font-bold text-gray-900 mt-2">
-            Our Product Category
-          </h2>
+    <section id="categories" className="py-10 bg-[#f9f9f9] border-y border-gray-100">
+      <div ref={ref} className="reveal max-w-[1440px] mx-auto px-4">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <span className="text-[#16a34a] text-xs font-bold uppercase tracking-widest">Top Categories</span>
+            <h2 className="font-['Cormorant_Garamond'] text-2xl md:text-3xl font-bold text-[#1a1a1a] mt-1">Top Categories Of This Month</h2>
+          </div>
+          <Link to="/products" className="hidden md:inline-flex items-center gap-1 text-xs font-bold uppercase tracking-wider text-[#1a1a1a] hover:text-[#16a34a]">
+            View All <span className="text-lg leading-none">→</span>
+          </Link>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 md:gap-6">
           {categories.map((cat) => (
             <Link
               key={cat.name}
               to={`/products?category=${cat.slug}`}
-              className={`group bg-gradient-to-br ${cat.color} rounded-2xl p-6 text-center border border-gray-100 hover:shadow-xl hover:border-green-200 transition-all duration-300 hover:-translate-y-1`}
+              className="group text-center"
             >
-              <div className="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                {cat.emoji}
+              <div className="relative w-full aspect-square max-w-[160px] mx-auto bg-white rounded-full overflow-hidden border border-gray-200 group-hover:border-[#16a34a] group-hover:shadow-lg transition-all duration-300 p-3">
+                <img src={cat.img} alt={cat.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300" />
               </div>
-              <h3 className="font-semibold text-gray-800 text-sm">{cat.name}</h3>
+              <h3 className="mt-3 text-sm font-semibold text-[#1a1a1a] group-hover:text-[#16a34a] leading-tight">{cat.name}</h3>
+              <p className="text-xs text-gray-400">{cat.count} Products</p>
             </Link>
           ))}
+        </div>
+
+        {/* XStore promo strip below categories */}
+        <div className="mt-8 bg-[#1a1a1a] rounded-lg px-4 py-3 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-center">
+          <span className="text-white text-sm">Take <b className="text-[#22c55e]">30% off</b> when you spend ₹1500 or more with code <b className="bg-white text-[#1a1a1a] px-2 py-0.5 rounded text-xs">XSTORE78</b></span>
+          <span className="hidden md:inline text-white/30">|</span>
+          <span className="text-white/70 text-xs">Free 2-days standard shipping on orders ₹2550+</span>
         </div>
       </div>
     </section>
