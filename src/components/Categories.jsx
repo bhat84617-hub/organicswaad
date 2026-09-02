@@ -42,12 +42,7 @@ export default function Categories() {
           ))}
         </div>
 
-        {/* XStore promo strip below categories */}
-        <div className="mt-8 bg-[#1a1a1a] rounded-lg px-4 py-3 flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-center">
-          <span className="text-white text-sm">Take <b className="text-[#22c55e]">30% off</b> when you spend ₹1500 or more with code <b className="bg-white text-[#1a1a1a] px-2 py-0.5 rounded text-xs">XSTORE78</b></span>
-          <span className="hidden md:inline text-white/30">|</span>
-          <span className="text-white/70 text-xs">Free 2-days standard shipping on orders ₹2550+</span>
-        </div>
+
       </div>
     </section>
   );
