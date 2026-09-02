@@ -104,10 +104,6 @@ export default function Header() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="text-white">
-              Free 2-days shipping on orders <b className="text-[#22c55e]">$255+</b>
-            </span>
-            <span className="w-px h-3 bg-[#3a3a3a]" />
             <a href="#" className="hover:text-white transition-colors">Track Order</a>
             <a href="#" className="hover:text-white transition-colors hidden lg:inline">USD / $</a>
             <a href="#" className="hover:text-white transition-colors hidden lg:inline">English</a>
@@ -115,16 +111,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="bg-[#f5f5f5] text-[#555] text-xs hidden lg:block border-b border-[#e9e9e9]">
-        <div className="max-w-[1440px] mx-auto px-4 h-8 flex items-center justify-center gap-2">
-          <span>
-            Take <b className="text-[#1a1a1a]">30% off</b> when you spend $150 or more with code{" "}
-            <b className="bg-[#1a1a1a] text-white px-2 py-0.5 rounded text-[11px]">XSTORE78</b>
-          </span>
-          <span className="text-[#999]">•</span>
-          <a href="#contact" className="text-[#16a34a] hover:underline font-medium">More Details</a>
-        </div>
-      </div>
+
 
       <div className="bg-[#1a1a1a] border-b border-[#2a2a2a]">
         <div className="max-w-[1440px] mx-auto px-4 h-[72px] flex items-center gap-4">

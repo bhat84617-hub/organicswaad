@@ -83,7 +83,7 @@ export default function Hero() {
   const slide = slides[current];
 
   return (
-    <section className="relative pt-[124px] lg:pt-[180px] overflow-hidden bg-[#f5f5f5]">
+    <section className="relative pt-[124px] lg:pt-[148px] overflow-hidden bg-[#f5f5f5]">
       {/* XStore layout: slider + 2 side banners */}
       <div className="max-w-[1440px] mx-auto px-4 py-4 grid lg:grid-cols-[1fr_320px] gap-4">
         {/* Slider */}
