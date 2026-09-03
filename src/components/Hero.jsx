@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, Sparkles } from "lucide-react";
 
 const slides = [
   { image: "/herosectionslide1.jpeg", alt: "Organic Swaad - Har Zaike Mein Sehat Aur Swaad" },
@@ -43,13 +43,15 @@ export default function Hero() {
                 decoding="sync"
                 draggable={false}
               />
-              {/* Side Shop Now button only - no text overlay */}
-              <div className="absolute right-4 sm:right-6 lg:right-8 top-1/2 -translate-y-1/2 z-20">
+              {/* Cute centered bottom Shop Now button */}
+              <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 z-20">
                 <Link
                   to="/products"
-                  className="inline-flex items-center justify-center bg-white text-[#1a1a1a] px-5 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide shadow-lg hover:bg-[#1a1a1a] hover:text-white transition-colors"
+                  className="group inline-flex items-center gap-2 bg-gradient-to-r from-[#16a34a] to-[#14b8a6] hover:from-[#15803d] hover:to-[#0d9488] text-white px-6 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-widest shadow-[0_4px_20px_rgba(22,163,74,0.4)] hover:shadow-[0_6px_24px_rgba(22,163,74,0.5)] hover:scale-105 transition-all border-2 border-white/20 backdrop-blur-sm"
                 >
+                  <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                   Shop Now
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
