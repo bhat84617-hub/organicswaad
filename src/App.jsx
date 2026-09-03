@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./context/CartContext";
+import { WishlistProvider } from "./context/WishlistContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
@@ -44,8 +45,9 @@ function Home() {
 
 function App() {
   return (
-    <CartProvider>
-      <BrowserRouter>
+    <WishlistProvider>
+      <CartProvider>
+        <BrowserRouter>
         <div className="min-h-screen bg-white">
           <Header />
           <main>
@@ -60,7 +62,8 @@ function App() {
           <WhatsAppButton />
         </div>
       </BrowserRouter>
-    </CartProvider>
+      </CartProvider>
+    </WishlistProvider>
   );
 }
 

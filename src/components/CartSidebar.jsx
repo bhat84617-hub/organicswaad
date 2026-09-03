@@ -54,8 +54,12 @@ export default function CartSidebar() {
           ) : (
             items.map((item) => (
               <div key={item.id} className="flex gap-3 p-3 bg-gray-50 rounded-2xl border border-gray-100 group">
-                <div className="w-16 h-16 bg-white rounded-xl border border-gray-100 flex items-center justify-center text-3xl flex-shrink-0">
-                  {item.emoji}
+                <div className="w-16 h-16 bg-white rounded-xl border border-gray-100 flex items-center justify-center overflow-hidden flex-shrink-0 p-1">
+                  {item.image ? (
+                    <img src={item.image} alt={item.name} className="w-full h-full object-contain" />
+                  ) : (
+                    <span className="text-2xl">{item.emoji || "🌿"}</span>
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="flex items-start justify-between">

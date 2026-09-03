@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import { products } from "../data";
 import {
   ShoppingCart,
@@ -35,6 +36,7 @@ function normalize(str) {
 
 export default function Header() {
   const { cartCount, setOpen } = useCart();
+  const { count: wishlistCount } = useWishlist();
   const [mobile, setMobile] = useState(false);
   const [deptOpen, setDeptOpen] = useState(false);
   const [searchCat, setSearchCat] = useState("All Categories");
@@ -212,11 +214,11 @@ export default function Header() {
               <User className="w-5 h-5" />
               <span className="text-[10px] mt-1 leading-none">Account</span>
             </Link>
-            <button className="hidden md:flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors relative">
-              <Heart className="w-5 h-5" />
+            <Link to="/products" className="hidden md:flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors relative">
+              <Heart className={`w-5 h-5 ${wishlistCount > 0 ? "fill-red-500 text-red-500" : ""}`} />
               <span className="text-[10px] mt-1 leading-none">Wishlist</span>
-              <span className="absolute -top-0.5 right-1 w-4 h-4 bg-[#16a34a] text-white text-[10px] rounded-full flex items-center justify-center font-bold">0</span>
-            </button>
+              {wishlistCount > 0 && <span className="absolute -top-0.5 right-1 w-4 h-4 bg-red-500 text-white text-[10px] rounded-full flex items-center justify-center font-bold">{wishlistCount}</span>}
+            </Link>
             <button onClick={() => setOpen(true)} className="relative flex flex-col items-center p-2 text-white hover:text-white transition-colors">
               <div className="relative">
                 <ShoppingCart className="w-5 h-5" />

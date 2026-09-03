@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 import { ShoppingCart, Heart, Minus, Plus, Check, MessageCircle, Star, Eye } from "lucide-react";
 
 export default function ProductCard({ product }) {
   const { addItem, items } = useCart();
+  const { toggle, isLiked } = useWishlist();
   const [qty, setQty] = useState(1);
-  const [liked, setLiked] = useState(false);
+  const liked = isLiked(product.id);
 
   const inCart = items.some((i) => i.id === product.id);
   const discount = Math.round((1 - product.price / product.originalPrice) * 100);
@@ -40,9 +42,10 @@ export default function ProductCard({ product }) {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setLiked(!liked);
+              toggle(product);
             }}
             className="absolute top-3 right-3 w-7 h-7 bg-white rounded-full shadow flex items-center justify-center hover:bg-gray-50 transition-colors"
+            aria-label="Wishlist"
           >
             <Heart className={`w-3.5 h-3.5 ${liked ? "fill-[#e53935] text-[#e53935]" : "text-gray-400"}`} />
           </button>
