@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { products } from "../data";
 import {
@@ -42,6 +42,33 @@ export default function Header() {
   const searchRef = useRef(null);
   const mobileSearchRef = useRef(null);
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleHashNav = (e, id) => {
+    e.preventDefault();
+    setMobile(false);
+    const headerOffset = 155;
+    const doScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - headerOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      setTimeout(doScroll, 350);
+    } else {
+      doScroll();
+    }
+  };
+
+  const handleHome = (e) => {
+    e.preventDefault();
+    setMobile(false);
+    if (location.pathname !== "/") navigate("/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const filtered = searchQ.trim().length >= 1
     ? products.filter((p) => {
@@ -247,12 +274,12 @@ export default function Header() {
 
       <div className="bg-white border-b border-gray-200 hidden lg:block">
         <div className="max-w-[1440px] mx-auto px-4 h-10 flex items-center gap-6 text-xs font-medium text-[#555]">
-          <Link to="/" className="hover:text-[#16a34a]">Home</Link>
+          <a href="/" onClick={handleHome} className="hover:text-[#16a34a] cursor-pointer">Home</a>
           <Link to="/products" className="hover:text-[#16a34a]">Shop</Link>
-          <a href="#categories" className="hover:text-[#16a34a]">Categories</a>
-          <a href="#why-us" className="hover:text-[#16a34a]">Why Us</a>
-          <a href="#testimonials" className="hover:text-[#16a34a]">Reviews</a>
-          <a href="#contact" className="hover:text-[#16a34a]">Contact</a>
+          <a href="#categories" onClick={(e) => handleHashNav(e, "categories")} className="hover:text-[#16a34a] cursor-pointer">Categories</a>
+          <a href="#why-us" onClick={(e) => handleHashNav(e, "why-us")} className="hover:text-[#16a34a] cursor-pointer">Why Us</a>
+          <a href="#testimonials" onClick={(e) => handleHashNav(e, "testimonials")} className="hover:text-[#16a34a] cursor-pointer">Reviews</a>
+          <a href="#contact" onClick={(e) => handleHashNav(e, "contact")} className="hover:text-[#16a34a] cursor-pointer">Contact</a>
           <span className="ml-auto flex items-center gap-2 text-[#1a1a1a]">
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" /> Free shipping on orders over ₹999
           </span>
@@ -272,17 +299,13 @@ export default function Header() {
               ))}
             </div>
             <div className="border-t border-gray-100 pt-3 space-y-1">
-              <Link to="/" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Home</Link>
-              <Link to="/products" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">All Products</Link>
-              <a href="#categories" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Categories</a>
-              <a
-                href="https://wa.me/919759131256?text=Hi%20Organic%20Swaad!"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block py-3 px-3 text-sm font-medium bg-[#16a34a] text-white rounded-lg text-center mt-3"
-              >
-                Order on WhatsApp
-              </a>
+              <a href="/" onClick={handleHome} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Home</a>
+              <Link to="/products" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Shop</Link>
+              <a href="#categories" onClick={(e) => handleHashNav(e, "categories")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Categories</a>
+              <a href="#why-us" onClick={(e) => handleHashNav(e, "why-us")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Why Us</a>
+              <a href="#testimonials" onClick={(e) => handleHashNav(e, "testimonials")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Reviews</a>
+              <a href="#contact" onClick={(e) => handleHashNav(e, "contact")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Contact</a>
+              <a href="https://wa.me/919759131256?text=Hi%20Organic%20Swaad!" target="_blank" rel="noopener noreferrer" className="block py-3 px-3 text-sm font-medium bg-[#16a34a] text-white rounded-lg text-center mt-3">Order on WhatsApp</a>
             </div>
           </div>
         </div>
