@@ -171,7 +171,7 @@ export default function Header() {
                 value={searchQ}
                 onChange={(e) => { setSearchQ(e.target.value); setShowSug(true); }}
                 onFocus={() => setShowSug(true)}
-                placeholder="Search for masale, combos..."
+                placeholder="products"
                 className="flex-1 px-4 text-sm text-[#1a1a1a] placeholder:text-gray-400 outline-none"
               />
               <button type="submit" className="bg-[#16a34a] hover:bg-[#15803d] text-white px-6 flex items-center justify-center transition-colors">
@@ -229,7 +229,7 @@ export default function Header() {
 
         {/* Mobile search with live */}
         <form onSubmit={handleSearch} ref={mobileSearchRef} className="md:hidden px-4 pb-3 flex gap-2 relative">
-          <input value={searchQ} onChange={(e) => { setSearchQ(e.target.value); setShowSug(true); }} onFocus={() => setShowSug(true)} placeholder="Search masale... (laal type kro)" className="flex-1 h-10 px-4 rounded bg-white text-sm outline-none" />
+          <input value={searchQ} onChange={(e) => { setSearchQ(e.target.value); setShowSug(true); }} onFocus={() => setShowSug(true)} placeholder="products" className="flex-1 h-10 px-4 rounded bg-white text-sm outline-none" />
           <button type="submit" className="w-10 h-10 bg-[#16a34a] rounded flex items-center justify-center text-white shrink-0">
             <Search className="w-4 h-4" />
           </button>
