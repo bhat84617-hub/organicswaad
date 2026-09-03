@@ -3,7 +3,27 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
 
 const slides = [
-  // NEW TEST SLIDE - isme already design me text hai isliye overlay text hide kiya hai
+  // BILKUL ABHI DALI HUI IMAGE - test fit
+  {
+    title: "Asli Garam Masala - Bilkul Nayi",
+    subtitle: "Asli Swaad!",
+    desc: "Shuddh, swachh aur behtareen garam masala powder - jo laaye har dish mein laajawaab swaad.",
+    cta: "Abhi Order Karo",
+    ctaLink: "/products",
+    bg: "from-amber-900 to-yellow-900",
+    image: "/newslidegarammashala.jpeg",
+    hideContent: true,
+  },
+  {
+    title: "Asli Jeera - Latest",
+    subtitle: "Asli Swaad!",
+    desc: "Shuddh jeera powder jo laaye har dish mein laajawaab swaad.",
+    cta: "Abhi Order Karo",
+    ctaLink: "/products",
+    bg: "from-amber-800 to-yellow-900",
+    image: "/newslideimage2.png",
+    hideContent: true,
+  },
   {
     title: "Asli Garam Masala",
     subtitle: "Asli Swaad!",
