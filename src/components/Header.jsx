@@ -123,10 +123,10 @@ export default function Header() {
               <Clock className="w-3 h-3" /> Mon - Fri 8:00 am - 6:00 pm
             </span>
             <span className="flex items-center gap-1.5">
-              <Phone className="w-3 h-3" /> +91-9759131256
+              <Phone className="w-3 h-3" /> +91-9355701335
             </span>
             <span className="hidden lg:flex items-center gap-1.5">
-              <Mail className="w-3 h-3" /> organicswaad@gmail.com
+              <Mail className="w-3 h-3" /> organicswaad1@gmail.com
             </span>
           </div>
           <div className="flex items-center gap-4">
@@ -309,7 +309,7 @@ export default function Header() {
               <a href="#why-us" onClick={(e) => handleHashNav(e, "why-us")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Why Us</a>
               <a href="#testimonials" onClick={(e) => handleHashNav(e, "testimonials")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Reviews</a>
               <a href="#contact" onClick={(e) => handleHashNav(e, "contact")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Contact</a>
-              <a href="https://wa.me/919759131256?text=Hi%20Organic%20Swaad!" target="_blank" rel="noopener noreferrer" className="block py-3 px-3 text-sm font-medium bg-[#16a34a] text-white rounded-lg text-center mt-3">Order on WhatsApp</a>
+              <a href="https://wa.me/919355701335?text=Hi%20Organic%20Swaad!" target="_blank" rel="noopener noreferrer" className="block py-3 px-3 text-sm font-medium bg-[#16a34a] text-white rounded-lg text-center mt-3">Order on WhatsApp</a>
             </div>
           </div>
         </div>

@@ -23,7 +23,7 @@ export default function Footer() {
             <span className="hidden lg:inline text-[#a8a8a8]">Follow:</span>
             <a href="#" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">FB</a>
             <a href="#" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">IG</a>
-            <a href="https://wa.me/919759131256" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">WA</a>
+            <a href="https://wa.me/919355701335" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">WA</a>
           </div>
         </div>
       </div>
@@ -93,14 +93,14 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#16a34a]" />
-                <a href="tel:+919759131256" className="hover:text-white">
-                  +91-9759131256
+                <a href="tel:+919355701335" className="hover:text-white">
+                  +91-9355701335
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-3.5 h-3.5 text-[#16a34a]" />
-                <a href="mailto:organicswaad@gmail.com" className="hover:text-white">
-                  organicswaad@gmail.com
+                <a href="mailto:organicswaad1@gmail.com" className="hover:text-white">
+                  organicswaad1@gmail.com
                 </a>
               </div>
             </div>

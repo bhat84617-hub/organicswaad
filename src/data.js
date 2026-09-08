@@ -1,7 +1,7 @@
 export const siteConfig = {
   brand: { name: "Organic Swaad", tagline: "Pure organic spices, pure organic swad", logo: "🌿" },
   links: {
-    whatsapp: "https://wa.me/919759131256",
+    whatsapp: "https://wa.me/919355701335",
     instagram: "https://instagram.com",
   },
   address: "Organic Swaad Spices, India",
