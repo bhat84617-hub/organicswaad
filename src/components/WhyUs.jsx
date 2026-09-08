@@ -18,8 +18,8 @@ export default function WhyUs() {
           <h2 className="font-['Cormorant_Garamond'] text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Kyun Chuniye <span className="text-green-600">Organic Swaad</span>?
           </h2>
-          <p className="text-gray-500 max-w-lg mx-auto">
-            Hum sirf masala nahi, vishwas bechte hain. Har grain mein hai shuddhata.
+          <p className="text-gray-500 max-w-xl mx-auto">
+            Hamare apne manufacturing plant se seedha aapke kitchen tak — koi bicholiya nahi, koi milawat nahi. Sirf shuddh masala, asli swaad.
           </p>
         </div>
 
@@ -40,7 +40,7 @@ export default function WhyUs() {
 
         <div className="mt-16 bg-white rounded-2xl border border-gray-100 p-8 sm:p-10">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {["100% Natural Ingredients", "No Artificial Colors", "FSSAI Certified", "Freshly Packed"].map((item, i) => (
+            {["Hamara Apna Manufacturing Plant", "Koi Bhi Artificial Color Nahi", "FSSAI Approved Quality", "Har Batch Lab Tested"].map((item, i) => (
               <div key={i} className="flex items-center gap-3">
                 <div className="w-8 h-8 bg-green-50 rounded-lg flex items-center justify-center flex-shrink-0">
                   <Check className="w-4 h-4 text-green-600" />

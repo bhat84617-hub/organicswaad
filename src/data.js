@@ -114,10 +114,14 @@ export const categories = [
 ];
 
 export const trustCards = [
-  { icon: "✅", title: "100% Organic", desc: "Koi chemical nahi" },
-  { icon: "📋", title: "FSSAI Certified", desc: "Quality standards" },
-  { icon: "🌱", title: "Organic Farming", desc: "Sustainable methods" },
-  { icon: "💚", title: "Chemical-Free", desc: "Pure organic" },
+  { icon: "🏭", title: "Khud ki Manufacturing", desc: "Hamara apna plant hai — masale seedha hamare factory me piste hain, kisi se outsource nahi. Isliye quality pe full control." },
+  { icon: "✅", title: "100% Pure & Chemical-Free", desc: "Koi bhi artificial color, preservative ya milawat nahi. Jo milta hai woh sirf shuddh masala hai — biryani bhi puchtī hai." },
+  { icon: "🌾", title: "Direct Organic Farms se", desc: "Hamare kisan directly organic farming karte hain. Bicholiye nahi, isliye fresh aur sasta — dono milega." },
+  { icon: "📋", title: "FSSAI Certified", desc: "Government approved quality standards. Har batch test hota hai, aap bharosa kar sakte ho." },
+  { icon: "🔬", title: "Lab Tested Har Batch", desc: "Koi heavy metal nahi, koi pesticide nahi. Har baar jab masala bike, usse pehle lab me check hota hai." },
+  { icon: "📦", title: "Hygienic Packaging", desc: "Airtight packing me aata hai masala — freshness bani rahe, khusboo ude nahi. Reusable dabba bhi milega." },
+  { icon: "🚚", title: "Free Delivery ₹999 se zyada", desc: "₹999 se upar ka order ho to delivery free hai. Seedha aapke darwaze tak — koi hidden charges nahi." },
+  { icon: "💬", title: "WhatsApp Support 24/7", desc: "Koi bhi sawaal ho, seedha WhatsApp karo — hamari team jawaab degi, robot nahi, insaan." },
 ];
 
 export const heroSpices = [
