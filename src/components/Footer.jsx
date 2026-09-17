@@ -139,7 +139,7 @@ export default function Footer() {
       {/* Copyright - XStore */}
       <div className="border-t border-[#2a2a2a]">
         <div className="max-w-[1440px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-[#777]">
-          <p>Copyright © 2026 XStore theme. Created by 8theme – WooCommerce themes. • © 2024 {siteConfig.brand.name}. All Rights Reserved.</p>
+          <p>Copyright © 2026 {siteConfig.brand.name}. All Rights Reserved.</p>
           <div className="flex items-center gap-3">
             <a href="#" className="hover:text-white">
               Privacy
