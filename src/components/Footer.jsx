@@ -51,21 +51,6 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Brand logos - XStore */}
-      <div className="border-b border-[#2a2a2a] py-4 hidden md:block">
-        <div className="max-w-[1440px] mx-auto px-4 flex items-center justify-between gap-4 opacity-60">
-          <span className="text-xs font-bold tracking-widest text-white">TRUSTED BRANDS:</span>
-          <div className="flex gap-6 text-xs font-semibold">
-            <span>BUBALUS</span>
-            <span>BUSINESS</span>
-            <span>CANBERA</span>
-            <span>PRESTIGE</span>
-            <span>RETROBRAND</span>
-            <span>WENTLY</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer - XStore 3 cols */}
       <div className="max-w-[1440px] mx-auto px-4 py-10">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
