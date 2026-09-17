@@ -108,12 +108,6 @@ export default function Footer() {
               <a href="#" className="block hover:text-white transition-colors">
                 Fast Shipping
               </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                Paypal / Secure Payment
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                30 Days Return Policy
-              </a>
               <Link to="/products" className="block hover:text-white transition-colors">
                 All Products
               </Link>
@@ -142,12 +136,6 @@ export default function Footer() {
               <a href="#" className="block hover:text-white transition-colors">
                 Track Order
               </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                Business Development
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                30 Days Return
-              </a>
             </nav>
           </div>
 
@@ -157,15 +145,6 @@ export default function Footer() {
             <nav className="space-y-2 text-xs">
               <a href="#" className="block hover:text-white transition-colors">
                 Fast Shipping
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                Paypal / Secure Payment
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                30 Days Return Policy
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
-                Business Development
               </a>
               <a href="#" className="block hover:text-white transition-colors">
                 Terms of Use
