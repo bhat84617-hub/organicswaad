@@ -103,16 +103,6 @@ export default function Footer() {
                 Returns and Refunds
               </Link>
             </nav>
-            <div className="mt-6">
-              <h5 className="text-white text-xs font-bold uppercase tracking-widest mb-2">Payment Methods</h5>
-              <div className="flex gap-1 flex-wrap opacity-80">
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">VISA</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">MC</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">PAYPAL</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">UPI</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">COD</span>
-              </div>
-            </div>
           </div>
 
           {/* Customer Service */}
@@ -132,6 +122,16 @@ export default function Footer() {
                 Track Order
               </Link>
             </nav>
+            <div className="mt-6">
+              <h5 className="text-white text-xs font-bold uppercase tracking-widest mb-2">Payment Methods</h5>
+              <div className="flex gap-1 flex-wrap opacity-80">
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">VISA</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">MC</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">PAYPAL</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">UPI</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">COD</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
