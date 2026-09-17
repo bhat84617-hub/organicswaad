@@ -31,7 +31,7 @@ export default function Footer() {
       {/* Features Banner - XStore style but with Organic Swaad green */}
       <div className="bg-[#232323] border-b border-[#2a2a2a] py-6">
         <div className="max-w-[1440px] mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center text-white">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 text-center text-white">
             <div className="flex flex-col items-center gap-1">
               <span className="text-xl">🌶️</span>
               <h4 className="font-bold text-xs uppercase tracking-widest">Variety</h4>
@@ -46,11 +46,6 @@ export default function Footer() {
               <span className="text-xl">💰</span>
               <h4 className="font-bold text-xs uppercase tracking-widest">Huge Savings</h4>
               <p className="text-xs text-[#a8a8a8]">At Lowest Price</p>
-            </div>
-            <div className="flex flex-col items-center gap-1">
-              <span className="text-xl">🔄</span>
-              <h4 className="font-bold text-xs uppercase tracking-widest">Easy Returns</h4>
-              <p className="text-xs text-[#a8a8a8]">No Questions Asked</p>
             </div>
           </div>
         </div>
