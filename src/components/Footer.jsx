@@ -43,9 +43,9 @@ export default function Footer() {
               <p className="text-xs text-[#a8a8a8]">100% Guarantee</p>
             </div>
             <div className="flex flex-col items-center gap-1">
-              <span className="text-xl">💰</span>
-              <h4 className="font-bold text-xs uppercase tracking-widest">Huge Savings</h4>
-              <p className="text-xs text-[#a8a8a8]">At Lowest Price</p>
+              <span className="text-xl">🌿</span>
+              <h4 className="font-bold text-xs uppercase tracking-widest">Farm Fresh</h4>
+              <p className="text-xs text-[#a8a8a8]">Freshly Ground Daily</p>
             </div>
           </div>
         </div>

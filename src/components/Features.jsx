@@ -1,9 +1,9 @@
-import { Shield, Truck, Star } from "lucide-react";
+import { Shield, Leaf, Star } from "lucide-react";
 
 const features = [
   { icon: Star, title: "Best Quality", desc: "100% Guarantee" },
   { icon: Shield, title: "100% Pure", desc: "No Milawat" },
-  { icon: Truck, title: "Huge Savings", desc: "At Lowest Price" },
+  { icon: Leaf, title: "Farm Fresh", desc: "Freshly Ground Daily" },
 ];
 
 export default function Features() {
