@@ -73,20 +73,14 @@ export default function ProductsPage() {
           ))}
         </div>
 
-        {/* XStore Promo Banners - 3 blocks mid-page */}
-        <div className="grid md:grid-cols-3 gap-4 mt-10">
+        {/* XStore Promo Banners - 2 blocks mid-page */}
+        <div className="grid md:grid-cols-2 gap-4 mt-10">
           <Link to="/products" className="relative bg-[#fef3c7] rounded-lg p-6 min-h-[140px] flex flex-col justify-center overflow-hidden group hover:shadow-md transition-shadow">
             <span className="text-xs font-bold tracking-widest text-[#92400e]">30% Off</span>
             <h4 className="font-bold text-[#78350f] text-lg leading-tight mt-1">Contemporary Setting</h4>
             <p className="text-xs text-[#92400e]/70 mt-1">Wooden Material • 2 Year Warranty</p>
             <span className="mt-3 inline-flex w-fit bg-[#1a1a1a] text-white text-xs font-bold px-4 py-1.5 rounded">MAKE DEAL</span>
             <img src="/organicswaadproductmirchipowder.jpeg" alt="" className="absolute right-0 bottom-0 w-28 h-28 object-contain opacity-90 group-hover:scale-105 transition-transform" />
-          </Link>
-          <Link to="/products?category=combo" className="relative bg-[#16a34a] rounded-lg p-6 min-h-[140px] flex flex-col justify-center overflow-hidden group hover:shadow-md transition-shadow text-white">
-            <span className="text-xs font-bold tracking-widest text-white/80">70% Flat</span>
-            <h4 className="font-bold text-white text-lg leading-tight mt-1">Wooden Stool</h4>
-            <p className="text-xs text-white/70 mt-1">Gift Available • Free Delivery</p>
-            <span className="mt-3 inline-flex w-fit bg-white text-[#1a1a1a] text-xs font-bold px-4 py-1.5 rounded">QUICK BUY</span>
           </Link>
           <Link to="/products" className="relative bg-[#f3f4f6] rounded-lg p-6 min-h-[140px] flex flex-col justify-center overflow-hidden group hover:shadow-md transition-shadow">
             <span className="text-xs font-bold tracking-widest text-gray-500">30% Flat</span>
