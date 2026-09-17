@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs leading-relaxed text-[#a8a8a8] mb-4">
-              Jo packet par likha hai, wahi packet ke andar — sirf asli masale, aur kuch nahi. Yahi hai Organic Swaad ka wada.
+              100% organic masale, sahi daam par — seedha aapke ghar tak.
             </p>
             <div className="space-y-2 text-xs">
               <div className="flex items-start gap-2">
