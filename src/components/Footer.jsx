@@ -79,7 +79,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-xs leading-relaxed text-[#a8a8a8] mb-4">
-              Hamari factory se aapke kitchen tak — 100% shuddh, bina milawat wale organic masale. Har packet me bharosa, har swaad me asli dum.
+              Dadi-nani ke zamane ki recipes, chhote batches me taaza pisai — Organic Swaad har ghar ke khane ko banata hai yaadgar.
             </p>
             <div className="space-y-2 text-xs">
               <div className="flex items-start gap-2">
