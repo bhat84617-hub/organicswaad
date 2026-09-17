@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import Header from "./components/Header";
@@ -12,6 +13,15 @@ import ProductsPage from "./components/ProductsPage";
 import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import CartSidebar from "./components/CartSidebar";
+import { ShippingPage, TermsPage, RefundsPage, TrackOrderPage } from "./components/InfoPages";
+
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 
 function WhatsAppButton() {
   return (
@@ -48,6 +58,7 @@ function App() {
     <WishlistProvider>
       <CartProvider>
         <BrowserRouter>
+        <ScrollToTop />
         <div className="min-h-screen bg-white">
           <Header />
           <main>
@@ -55,6 +66,10 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/products" element={<ProductsPage />} />
               <Route path="/product/:slug" element={<ProductDetail />} />
+              <Route path="/shipping" element={<ShippingPage />} />
+              <Route path="/terms" element={<TermsPage />} />
+              <Route path="/refunds" element={<RefundsPage />} />
+              <Route path="/track-order" element={<TrackOrderPage />} />
             </Routes>
           </main>
           <Footer />

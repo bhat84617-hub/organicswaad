@@ -105,18 +105,18 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white text-xs mb-4 uppercase tracking-widest">Useful Link</h4>
             <nav className="space-y-2 text-xs">
-              <a href="#" className="block hover:text-white transition-colors">
+              <Link to="/shipping" className="block hover:text-white transition-colors">
                 Fast Shipping
-              </a>
+              </Link>
               <Link to="/products" className="block hover:text-white transition-colors">
                 All Products
               </Link>
-              <a href="#" className="block hover:text-white transition-colors">
+              <Link to="/terms" className="block hover:text-white transition-colors">
                 Terms of Use
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
+              </Link>
+              <Link to="/refunds" className="block hover:text-white transition-colors">
                 Returns and Refunds
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -133,9 +133,9 @@ export default function Footer() {
               <a href="#contact" className="block hover:text-white transition-colors">
                 Contact Us
               </a>
-              <a href="#" className="block hover:text-white transition-colors">
+              <Link to="/track-order" className="block hover:text-white transition-colors">
                 Track Order
-              </a>
+              </Link>
             </nav>
           </div>
 
@@ -143,15 +143,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white text-xs mb-4 uppercase tracking-widest">Let Us Help You</h4>
             <nav className="space-y-2 text-xs">
-              <a href="#" className="block hover:text-white transition-colors">
+              <Link to="/shipping" className="block hover:text-white transition-colors">
                 Fast Shipping
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
+              </Link>
+              <Link to="/terms" className="block hover:text-white transition-colors">
                 Terms of Use
-              </a>
-              <a href="#" className="block hover:text-white transition-colors">
+              </Link>
+              <Link to="/refunds" className="block hover:text-white transition-colors">
                 Returns and Refunds
-              </a>
+              </Link>
             </nav>
             <div className="mt-6">
               <h5 className="text-white text-xs font-bold uppercase tracking-widest mb-2">Payment Methods</h5>
@@ -175,9 +175,9 @@ export default function Footer() {
             <a href="#" className="hover:text-white">
               Privacy
             </a>
-            <a href="#" className="hover:text-white">
+            <Link to="/terms" className="hover:text-white">
               Terms
-            </a>
+            </Link>
             <span>Made with ❤️ in India</span>
           </div>
         </div>

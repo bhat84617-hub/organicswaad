@@ -130,7 +130,7 @@ export default function Header() {
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <a href="#" className="hover:text-white transition-colors">Track Order</a>
+            <Link to="/track-order" className="hover:text-white transition-colors">Track Order</Link>
             <a href="#" className="hover:text-white transition-colors hidden lg:inline">USD / $</a>
             <a href="#" className="hover:text-white transition-colors hidden lg:inline">English</a>
           </div>
