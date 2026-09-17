@@ -19,7 +19,7 @@ export default function WhyUs() {
             Kyun Chuniye <span className="text-green-600">Organic Swaad</span>?
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto">
-            Hamare apne manufacturing plant se seedha aapke kitchen tak — koi bicholiya nahi, koi milawat nahi. Sirf shuddh masala, asli swaad.
+            Hamari factory se aapke kitchen tak — 100% shuddh, 100% natural. Swaad jo dil jeete.
           </p>
         </div>
 
