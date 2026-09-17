@@ -66,9 +66,9 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Main Footer - XStore 4 cols */}
+      {/* Main Footer - XStore 3 cols */}
       <div className="max-w-[1440px] mx-auto px-4 py-10">
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* About - preserve images */}
           <div className="lg:col-span-1">
             <div className="flex items-center gap-2 mb-3">
@@ -118,6 +118,16 @@ export default function Footer() {
                 Returns and Refunds
               </Link>
             </nav>
+            <div className="mt-6">
+              <h5 className="text-white text-xs font-bold uppercase tracking-widest mb-2">Payment Methods</h5>
+              <div className="flex gap-1 flex-wrap opacity-80">
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">VISA</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">MC</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">PAYPAL</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">UPI</span>
+                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">COD</span>
+              </div>
+            </div>
           </div>
 
           {/* Customer Service */}
@@ -137,32 +147,6 @@ export default function Footer() {
                 Track Order
               </Link>
             </nav>
-          </div>
-
-          {/* Let us help you */}
-          <div>
-            <h4 className="font-bold text-white text-xs mb-4 uppercase tracking-widest">Let Us Help You</h4>
-            <nav className="space-y-2 text-xs">
-              <Link to="/shipping" className="block hover:text-white transition-colors">
-                Fast Shipping
-              </Link>
-              <Link to="/terms" className="block hover:text-white transition-colors">
-                Terms of Use
-              </Link>
-              <Link to="/refunds" className="block hover:text-white transition-colors">
-                Returns and Refunds
-              </Link>
-            </nav>
-            <div className="mt-6">
-              <h5 className="text-white text-xs font-bold uppercase tracking-widest mb-2">Payment Methods</h5>
-              <div className="flex gap-1 flex-wrap opacity-80">
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">VISA</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">MC</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">PAYPAL</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">UPI</span>
-                <span className="bg-white text-[#1a1a1a] text-[9px] font-bold px-2 py-1 rounded">COD</span>
-              </div>
-            </div>
           </div>
         </div>
       </div>
