@@ -1,4 +1,6 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useSearchParams } from "react-router-dom";
+import { getOrder, orderStatus, formatDate } from "../store";
 
 function InfoLayout({ title, subtitle, children }) {
   return (
@@ -109,31 +111,79 @@ export function RefundsPage() {
 }
 
 export function TrackOrderPage() {
+  const [params] = useSearchParams();
+  const [orderId, setOrderId] = useState(params.get("orderId") || "");
+  const [searched, setSearched] = useState(params.get("orderId") || "");
+  const order = searched ? getOrder(searched) : null;
+  const status = order ? orderStatus(order) : null;
+
+  const search = (e) => {
+    e.preventDefault();
+    setSearched(orderId);
+  };
+
   return (
-    <InfoLayout title="Track Order" subtitle="Apne order ka status 1 minute me jano.">
-      <div>
-        <h3 className="font-semibold text-[#1a1a1a] mb-1">WhatsApp par track karo (sabse fast)</h3>
-        <p>
-          Neeche button dabao — WhatsApp khul jayega. Bas apna{" "}
-          <b>order number ya mobile number</b> bhej do, hamari team turant status bata degi.
+    <InfoLayout title="Track Order" subtitle="Apni Order ID dalo — status yahin dikhega.">
+      <form onSubmit={search} className="flex gap-2">
+        <input
+          value={orderId}
+          onChange={(e) => setOrderId(e.target.value.toUpperCase())}
+          placeholder="Order ID (jaise OS482913)"
+          className="flex-1 h-11 px-4 border border-gray-200 rounded-xl text-sm font-bold tracking-wider uppercase outline-none focus:border-[#16a34a] focus:ring-2 focus:ring-green-100"
+        />
+        <button type="submit" className="px-6 bg-[#1a1a1a] text-white text-sm font-bold rounded-xl hover:bg-black transition-colors">
+          Track
+        </button>
+      </form>
+
+      {searched && !order && (
+        <p className="text-sm text-red-600 bg-red-50 rounded-xl px-4 py-3">
+          "{searched}" ID ka order nahi mila. ID check karo — ye usi phone/browser par dikhega jahan se order kiya tha.
         </p>
-        <a
-          href="https://wa.me/919355701335?text=Hi%20Organic%20Swaad!%20Mujhe%20apna%20order%20track%20karna%20hai.%20Mera%20order%20number%20hai%3A%20"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex mt-3 bg-[#25D366] hover:bg-[#1eb856] text-white text-sm font-bold px-6 py-2.5 rounded-full transition-colors"
-        >
-          Track on WhatsApp
-        </a>
-      </div>
-      <Point
-        heading="Ya call kar lo"
-        text="Call karo +91-9355701335 (subah 9 se shaam 8 tak). Order number ready rakho — status turant mil jayega."
-      />
-      <Point
-        heading="Normal timeline"
-        text="Dispatch 24–48 hours me, delivery 3–7 working days me. Dispatch ke baad tracking ID WhatsApp/SMS par bhej di jati hai."
-      />
+      )}
+
+      {order && status && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between bg-gray-50 rounded-xl px-4 py-3">
+            <div>
+              <p className="font-bold text-[#1a1a1a]">{order.id}</p>
+              <p className="text-xs text-gray-500">
+                {formatDate(order.placedAt)} · ₹{order.total} · {order.payment === "COD" ? "Cash on Delivery" : "UPI"}
+              </p>
+            </div>
+            <span className="text-[11px] font-bold text-[#16a34a] bg-green-100 px-3 py-1 rounded-full">
+              {status.stage}
+            </span>
+          </div>
+
+          <div className="space-y-0">
+            {status.stages.map((s, i) => (
+              <div key={s} className="flex gap-3">
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold ${
+                      i <= status.index ? "bg-[#16a34a] text-white" : "bg-gray-200 text-gray-400"
+                    }`}
+                  >
+                    {i <= status.index ? "✓" : i + 1}
+                  </div>
+                  {i < status.stages.length - 1 && (
+                    <div className={`w-0.5 h-6 ${i < status.index ? "bg-[#16a34a]" : "bg-gray-200"}`} />
+                  )}
+                </div>
+                <p className={`text-sm pb-4 ${i <= status.index ? "font-semibold text-[#1a1a1a]" : "text-gray-400"}`}>
+                  {s}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-xs text-gray-500 bg-gray-50 rounded-xl px-4 py-3">
+            Delivery address: {order.address}, {order.pincode} · Expected delivery:{" "}
+            {formatDate(order.placedAt + 5 * 24 * 3600 * 1000)} tak
+          </div>
+        </div>
+      )}
     </InfoLayout>
   );
 }

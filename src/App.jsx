@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
+import { AuthProvider } from "./context/AuthContext";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Categories from "./components/Categories";
@@ -14,6 +15,8 @@ import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import CartSidebar from "./components/CartSidebar";
 import { ShippingPage, TermsPage, RefundsPage, TrackOrderPage } from "./components/InfoPages";
+import AccountPage from "./components/AccountPage";
+import { CheckoutPage, OrderSuccessPage } from "./components/CheckoutPage";
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -55,6 +58,7 @@ function Home() {
 
 function App() {
   return (
+    <AuthProvider>
     <WishlistProvider>
       <CartProvider>
         <BrowserRouter>
@@ -70,6 +74,9 @@ function App() {
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/refunds" element={<RefundsPage />} />
               <Route path="/track-order" element={<TrackOrderPage />} />
+              <Route path="/account" element={<AccountPage />} />
+              <Route path="/checkout" element={<CheckoutPage />} />
+              <Route path="/order-success/:id" element={<OrderSuccessPage />} />
             </Routes>
           </main>
           <Footer />
@@ -79,6 +86,7 @@ function App() {
       </BrowserRouter>
       </CartProvider>
     </WishlistProvider>
+    </AuthProvider>
   );
 }
 

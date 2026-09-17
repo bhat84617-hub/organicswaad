@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 import { products } from "../data";
 import {
   ShoppingCart,
@@ -34,6 +35,7 @@ function normalize(str) {
 
 export default function Header() {
   const { cartCount, setOpen } = useCart();
+  const { user } = useAuth();
   const [mobile, setMobile] = useState(false);
   const [deptOpen, setDeptOpen] = useState(false);
   const [searchCat, setSearchCat] = useState("All Categories");
@@ -238,9 +240,15 @@ export default function Header() {
           </form>
 
           <div className="flex items-center gap-1 md:gap-2 ml-auto">
-            <Link to="/products" className="hidden lg:flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors">
-              <User className="w-5 h-5" />
-              <span className="text-[10px] mt-1 leading-none">Account</span>
+            <Link to="/account" className="hidden lg:flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors">
+              {user ? (
+                <span className="w-5 h-5 rounded-full bg-[#16a34a] text-white text-[10px] font-bold flex items-center justify-center">
+                  {user.name.charAt(0).toUpperCase()}
+                </span>
+              ) : (
+                <User className="w-5 h-5" />
+              )}
+              <span className="text-[10px] mt-1 leading-none">{user ? user.name.split(" ")[0] : "Account"}</span>
             </Link>
 
             <button onClick={() => setOpen(true)} className="relative flex flex-col items-center p-2 text-white hover:text-white transition-colors">
@@ -309,6 +317,8 @@ export default function Header() {
               <a href="#why-us" onClick={(e) => handleHashNav(e, "why-us")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Why Us</a>
               <a href="#testimonials" onClick={(e) => handleHashNav(e, "testimonials")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Reviews</a>
               <a href="#contact" onClick={(e) => handleHashNav(e, "contact")} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Contact</a>
+              <Link to="/account" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">My Account</Link>
+              <Link to="/track-order" onClick={() => setMobile(false)} className="block py-2.5 px-3 text-sm font-medium text-gray-700 hover:bg-gray-50 rounded-lg">Track Order</Link>
               <a href="https://wa.me/919355701335?text=Hi%20Organic%20Swaad!" target="_blank" rel="noopener noreferrer" className="block py-3 px-3 text-sm font-medium bg-[#16a34a] text-white rounded-lg text-center mt-3">Order on WhatsApp</a>
             </div>
           </div>
