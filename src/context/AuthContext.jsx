@@ -40,6 +40,7 @@ export function AuthProvider({ children }) {
       return {};
     } catch (err) {
       const code = String(err?.code || "");
+      console.error("[auth]", code, err?.message || "");
       if (code.includes("popup-closed") || code.includes("cancelled-popup")) {
         return { error: "Popup band ho gaya — dobara try karo." };
       }
