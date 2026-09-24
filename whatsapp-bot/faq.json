@@ -1,0 +1,77 @@
+{
+  "brand": "Organic Swaad",
+  "tagline": "Pure organic spices, pure organic swad",
+  "whatsapp": "https://wa.me/919759131256",
+  "email": "organicswaad@gmail.com",
+  "address": "Organic Swaad Spices, India",
+  "delivery": "All India delivery. Combo pack par FREE delivery. Single product par order confirm hote time delivery charge bataya jayega. Aam taur par 3-5 din me pahunch jata hai.",
+  "payment": "Cash on Delivery (COD) aur UPI dono available hai. Order confirm hote time aap bata sakte ho.",
+  "products": [
+    {
+      "id": 1,
+      "key": "haldi",
+      "name": "Organic Haldi Powder",
+      "hindiName": "हल्दी पाउडर",
+      "price": 179,
+      "originalPrice": 249,
+      "weight": "200g",
+      "tagline": "Sona jaise shuddh organic haldi",
+      "desc": "High curcumin wali premium haldi. Immunity, skin aur heart ke liye faydemand. 100% chemical-free."
+    },
+    {
+      "id": 2,
+      "key": "mirch",
+      "name": "Organic Lal Mirch Powder",
+      "hindiName": "लाल मिर्च पाउडर",
+      "price": 149,
+      "originalPrice": 199,
+      "weight": "200g",
+      "tagline": "Teez swad, bhari khusboo",
+      "desc": "Bina chemical ke teekhi lal mirch. Natural lal rang, koi artificial color nahi."
+    },
+    {
+      "id": 3,
+      "key": "dhaniya",
+      "name": "Organic Dhaniya Powder",
+      "hindiName": "धनिया पाउडर",
+      "price": 139,
+      "originalPrice": 179,
+      "weight": "200g",
+      "tagline": "Mild swad, meethi khusboo",
+      "desc": "Taza pisa dhaniya, bina pesticide ke. Daal-sabzi me jaan daal de."
+    },
+    {
+      "id": 4,
+      "key": "jeera",
+      "name": "Organic Jeera Powder",
+      "hindiName": "जीरा पाउडर",
+      "price": 149,
+      "originalPrice": 199,
+      "weight": "200g",
+      "tagline": "Pachan ka dost",
+      "desc": "Khushboodar jeera, pachan ke liye best. Iron se bharpur, koi chemical residue nahi."
+    },
+    {
+      "id": 5,
+      "key": "garam",
+      "name": "Organic Garam Masala",
+      "hindiName": "गरम मसाला",
+      "price": 199,
+      "originalPrice": 279,
+      "weight": "150g",
+      "tagline": "12+ masalo ka perfect blend",
+      "desc": "12+ organic masalo ka hand-blended mix. Biryani, paneer sab ke liye. FSSAI certified, No MSG."
+    },
+    {
+      "id": 6,
+      "key": "combo",
+      "name": "Complete Organic Combo Set",
+      "hindiName": "पूरा स्वाद कॉम्बो",
+      "price": 749,
+      "originalPrice": 999,
+      "weight": "950g total",
+      "tagline": "Saare 5 masale ek saath + FREE delivery",
+      "desc": "5 signature masale premium gift box me. 30% bachat + free delivery + eco-friendly packing."
+    }
+  ]
+}

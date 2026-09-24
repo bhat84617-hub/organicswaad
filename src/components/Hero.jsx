@@ -90,15 +90,15 @@ export default function Hero() {
         <div className="hidden lg:flex flex-col gap-4">
           <Link to="/products" className="relative flex-1 bg-gradient-to-br from-[#fef3c7] to-[#fde68a] rounded-lg overflow-hidden p-6 flex flex-col justify-center min-h-[246px] group">
             <span className="text-xs font-bold tracking-widest text-[#92400e] uppercase">Festival Offer</span>
-            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold text-[#78350f] mt-1">Contemporary Wall</h3>
-            <p className="text-sm text-[#92400e] mt-1">Now at ₹60 only</p>
+            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold text-[#78350f] mt-1">Organic Haldi</h3>
+            <p className="text-sm text-[#92400e] mt-1">Now at ₹179 only</p>
             <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold text-[#78350f]">SHOP NOW →</span>
             <img src="/herosectionslide1.jpeg" alt="" className="absolute right-2 bottom-2 w-24 h-24 object-cover rounded opacity-40 group-hover:opacity-60 transition-opacity" />
           </Link>
           <Link to="/products?category=combo" className="relative flex-1 bg-[#1a1a1a] rounded-lg overflow-hidden p-6 flex flex-col justify-center min-h-[246px] group text-white">
-            <span className="text-xs font-bold tracking-widest text-[#22c55e] uppercase">45% Flat</span>
-            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold mt-1">Decor Pieces</h3>
-            <p className="text-xs text-white/60 mt-1">Ultra HD Light • Platinum</p>
+            <span className="text-xs font-bold tracking-widest text-[#22c55e] uppercase">28% Flat</span>
+            <h3 className="font-['Cormorant_Garamond'] text-2xl font-bold mt-1">Garam Masala</h3>
+            <p className="text-xs text-white/60 mt-1">12+ Organic Spices • 150g</p>
             <span className="inline-flex items-center gap-1 mt-4 text-sm font-semibold">VIEW DETAILS →</span>
           </Link>
         </div>

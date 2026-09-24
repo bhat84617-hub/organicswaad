@@ -77,15 +77,15 @@ export default function ProductsPage() {
         <div className="grid md:grid-cols-2 gap-4 mt-10">
           <Link to="/products" className="relative bg-[#fef3c7] rounded-lg p-6 min-h-[140px] flex flex-col justify-center overflow-hidden group hover:shadow-md transition-shadow">
             <span className="text-xs font-bold tracking-widest text-[#92400e]">30% Off</span>
-            <h4 className="font-bold text-[#78350f] text-lg leading-tight mt-1">Contemporary Setting</h4>
-            <p className="text-xs text-[#92400e]/70 mt-1">Wooden Material • 2 Year Warranty</p>
-            <span className="mt-3 inline-flex w-fit bg-[#1a1a1a] text-white text-xs font-bold px-4 py-1.5 rounded">MAKE DEAL</span>
+            <h4 className="font-bold text-[#78350f] text-lg leading-tight mt-1">Teekhi Lal Mirch</h4>
+            <p className="text-xs text-[#92400e]/70 mt-1">100% Organic • 200g Pack</p>
+            <span className="mt-3 inline-flex w-fit bg-[#1a1a1a] text-white text-xs font-bold px-4 py-1.5 rounded">SHOP NOW</span>
             <img src="/organicswaadproductmirchipowder.jpeg" alt="" className="absolute right-0 bottom-0 w-28 h-28 object-contain opacity-90 group-hover:scale-105 transition-transform" />
           </Link>
           <Link to="/products" className="relative bg-[#f3f4f6] rounded-lg p-6 min-h-[140px] flex flex-col justify-center overflow-hidden group hover:shadow-md transition-shadow">
             <span className="text-xs font-bold tracking-widest text-gray-500">30% Flat</span>
-            <h4 className="font-bold text-[#1a1a1a] text-lg leading-tight mt-1">Kabino Sideboard</h4>
-            <p className="text-xs text-gray-500 mt-1">3.5-inch (89 mm) • 4 Wide Box</p>
+            <h4 className="font-bold text-[#1a1a1a] text-lg leading-tight mt-1">Fresh Dhaniya Powder</h4>
+            <p className="text-xs text-gray-500 mt-1">Pesticide Free • 200g Pack</p>
             <span className="mt-3 inline-flex w-fit bg-[#1a1a1a] text-white text-xs font-bold px-4 py-1.5 rounded">VIEW MORE</span>
             <img src="/organicswaadproductimagedhaniyapowder.jpeg" alt="" className="absolute right-0 bottom-0 w-28 h-28 object-contain opacity-90 group-hover:scale-105 transition-transform" />
           </Link>
