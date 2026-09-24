@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { myOrders, orderStatus, formatDate } from "../store";
@@ -16,13 +16,17 @@ function Field({ label, ...props }) {
 }
 
 function AuthForm() {
-  const { signup, login, signInWithGoogle, googleBusy } = useAuth();
+  const { signup, login, signInWithGoogle, googleBusy, redirectError } = useAuth();
   const [mode, setMode] = useState("signin"); // signin | signup
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
+
+  useEffect(() => {
+    if (redirectError) setError(redirectError);
+  }, [redirectError]);
 
   const submit = async (e) => {
     e.preventDefault();

@@ -235,7 +235,7 @@ export default function Header() {
           </form>
 
           <div className="flex items-center gap-1 md:gap-2 ml-auto">
-            <Link to="/account" className="hidden lg:flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors">
+            <Link to="/account" className="flex flex-col items-center p-2 text-white/80 hover:text-white transition-colors">
               {user ? (
                 <span className="w-5 h-5 rounded-full bg-[#16a34a] text-white text-[10px] font-bold flex items-center justify-center">
                   {user.name.charAt(0).toUpperCase()}
@@ -243,7 +243,7 @@ export default function Header() {
               ) : (
                 <User className="w-5 h-5" />
               )}
-              <span className="text-[10px] mt-1 leading-none">{user ? user.name.split(" ")[0] : "Account"}</span>
+              <span className="text-[10px] mt-1 leading-none hidden md:block">{user ? user.name.split(" ")[0] : "Account"}</span>
             </Link>
 
             <button onClick={() => setOpen(true)} className="relative flex flex-col items-center p-2 text-white hover:text-white transition-colors">
