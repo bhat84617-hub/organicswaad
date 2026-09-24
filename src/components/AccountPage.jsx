@@ -16,7 +16,7 @@ function Field({ label, ...props }) {
 }
 
 function AuthForm() {
-  const { signup, login } = useAuth();
+  const { signup, login, signInWithGoogle, googleBusy } = useAuth();
   const [mode, setMode] = useState("signin"); // signin | signup
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState("");
@@ -34,6 +34,12 @@ function AuthForm() {
     } finally {
       setBusy(false);
     }
+  };
+
+  const google = async () => {
+    setError("");
+    const r = await signInWithGoogle();
+    if (r?.error) setError(r.error);
   };
 
   return (
@@ -72,12 +78,33 @@ function AuthForm() {
         {error && <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>}
         <button
           type="submit"
-          disabled={busy}
+          disabled={busy || googleBusy}
           className="w-full py-3 bg-[#16a34a] hover:bg-[#15803d] text-white rounded-xl text-sm font-bold transition-colors disabled:opacity-60"
         >
           {busy ? "Please ruko..." : mode === "signup" ? "Account Banao" : "Sign In"}
         </button>
       </form>
+
+      <div className="flex items-center gap-3 my-5">
+        <div className="h-px flex-1 bg-gray-200" />
+        <span className="text-xs text-gray-400">ya</span>
+        <div className="h-px flex-1 bg-gray-200" />
+      </div>
+
+      <button
+        type="button"
+        onClick={google}
+        disabled={busy || googleBusy}
+        className="w-full py-3 bg-white border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-xl text-sm font-bold transition-colors flex items-center justify-center gap-3 disabled:opacity-60"
+      >
+        <svg className="w-4 h-4" viewBox="0 0 48 48" aria-hidden="true">
+          <path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.3-.4-3.5z"/>
+          <path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.9 1.2 8 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/>
+          <path fill="#4CAF50" d="M24 44c5.2 0 10-2 13.6-5.2l-6.3-5.3C29.2 35.1 26.7 36 24 36c-5.3 0-9.7-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/>
+          <path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.1-4 5.5l6.3 5.3C41.4 35.6 44 30.3 44 24c0-1.3-.1-2.3-.4-3.5z"/>
+        </svg>
+        {googleBusy ? "Google popup khul raha hai..." : "Continue with Google"}
+      </button>
     </div>
   );
 }
@@ -94,7 +121,10 @@ function Profile() {
         </div>
         <div className="flex-1">
           <h3 className="font-bold text-[#1a1a1a]">{user.name}</h3>
-          <p className="text-xs text-gray-500">+91-{user.mobile}</p>
+          <p className="text-xs text-gray-500">
+            {user.mobile ? `+91-${user.mobile}` : user.email}
+            {user.provider === "google" && <span className="ml-2 inline-block bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full text-[10px] font-bold">Google</span>}
+          </p>
         </div>
         <button onClick={logout} className="text-xs font-semibold text-red-600 hover:underline">
           Logout

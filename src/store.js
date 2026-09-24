@@ -70,9 +70,17 @@ export async function loginUser({ mobile, password }) {
 export function currentUser() {
   const s = read(SESSION_KEY, null);
   if (!s) return null;
+  if (s.provider === "google") {
+    return { name: s.name, mobile: s.mobile || "", email: s.email || "", provider: "google" };
+  }
   const users = read(USERS_KEY, []);
   const u = users.find((x) => x.mobile === s.mobile);
   return u ? { name: u.name, mobile: u.mobile } : null;
+}
+
+// Google sign-in ka session (Firebase user ko local session se jodna)
+export function saveGoogleSession({ name, mobile, email }) {
+  write(SESSION_KEY, { provider: "google", name, mobile: mobile || "", email: email || "" });
 }
 
 export function logoutUser() {
