@@ -69,7 +69,7 @@ export default function Footer() {
             <div className="space-y-2 text-xs">
               <div className="flex items-start gap-2">
                 <MapPin className="w-3.5 h-3.5 text-[#16a34a] mt-0.5" />
-                <span>East 21st Street / 304 New York NY10010 • Organic Swaad Spices, India</span>
+                <span>{siteConfig.address}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-3.5 h-3.5 text-[#16a34a]" />

@@ -8,11 +8,53 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: "1mb" }));
 
+// Basic security headers
+app.use((req, res, next) => {
+  res.set("X-Content-Type-Options", "nosniff");
+  res.set("X-Frame-Options", "DENY");
+  res.set("Referrer-Policy", "no-referrer");
+  next();
+});
+
+// Simple in-memory rate limit (per IP): 60 requests / minute
+const rateMap = new Map();
+app.use((req, res, next) => {
+  const ip = req.ip || "unknown";
+  const now = Date.now();
+  const win = rateMap.get(ip) || { count: 0, start: now };
+  if (now - win.start > 60_000) {
+    win.count = 0;
+    win.start = now;
+  }
+  win.count += 1;
+  rateMap.set(ip, win);
+  if (win.count > 60) {
+    return res.status(429).json({ ok: false, error: "Too many requests" });
+  }
+  next();
+});
+
 const PORT = process.env.PORT || 3001;
 const OPENWA_BASE_URL = process.env.OPENWA_BASE_URL || "http://localhost:2785";
 const OPENWA_API_KEY = process.env.OPENWA_API_KEY || "";
 const SESSION_ID = process.env.SESSION_ID || "";
 const OWNER_NUMBER = process.env.OWNER_NUMBER || "";
+const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET || "";
+const ADMIN_SECRET = process.env.ADMIN_SECRET || "";
+
+// WEBHOOK_SECRET set ho to sirf wahi bhej sakta hai (fake POST se bachav)
+function webhookAuthorized(req) {
+  if (!WEBHOOK_SECRET) return true;
+  const got = req.query.secret || req.get("x-webhook-secret") || "";
+  return got === WEBHOOK_SECRET;
+}
+
+// Orders me PII hai — ADMIN_SECRET set ho to list ke liye chahiye
+function adminAuthorized(req) {
+  if (!ADMIN_SECRET) return true;
+  const got = req.query.secret || req.get("x-admin-secret") || "";
+  return got === ADMIN_SECRET;
+}
 
 const faq = JSON.parse(fs.readFileSync(path.join(__dirname, "faq.json"), "utf8"));
 const ORDERS_FILE = path.join(__dirname, "orders.json");
@@ -147,6 +189,9 @@ app.get("/health", (req, res) => {
 
 app.post("/webhook", async (req, res) => {
   try {
+    if (!webhookAuthorized(req)) {
+      return res.status(401).json({ ok: false, error: "Unauthorized" });
+    }
     const from = extractFrom(req.body);
     const text = extractMessage(req.body);
     const reply = getReply(text);
@@ -169,15 +214,18 @@ app.post("/webhook", async (req, res) => {
 app.post("/api/orders", (req, res) => {
   const { id, items, total, name, mobile, address, pincode, payment } = req.body || {};
   if (!name || !mobile) return res.status(400).json({ ok: false, error: "name & mobile required" });
+  if (!/^[6-9]\d{9}$/.test(String(mobile).trim())) {
+    return res.status(400).json({ ok: false, error: "invalid mobile" });
+  }
   const order = {
     id: id || "OS" + String(Date.now()).slice(-6),
-    items: items || [],
-    total: total || 0,
-    name,
-    mobile,
-    address: address || "",
-    pincode: pincode || "",
-    payment: payment || "COD",
+    items: Array.isArray(items) ? items.slice(0, 50) : [],
+    total: Math.max(0, Math.min(Number(total) || 0, 1_000_000)),
+    name: String(name).slice(0, 100),
+    mobile: String(mobile).trim(),
+    address: String(address || "").slice(0, 500),
+    pincode: String(pincode || "").slice(0, 10),
+    payment: payment === "UPI" ? "UPI" : "COD",
     placedAt: Date.now(),
     source: "website",
   };
@@ -192,6 +240,9 @@ app.post("/api/orders", (req, res) => {
 });
 
 app.get("/api/orders", (req, res) => {
+  if (!adminAuthorized(req)) {
+    return res.status(401).json({ ok: false, error: "Unauthorized" });
+  }
   res.json({ ok: true, orders: readOrders() });
 });
 

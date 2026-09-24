@@ -22,12 +22,18 @@ function AuthForm() {
   const [mobile, setMobile] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [busy, setBusy] = useState(false);
 
-  const submit = (e) => {
+  const submit = async (e) => {
     e.preventDefault();
     setError("");
-    const r = mode === "signup" ? signup({ name, mobile, password }) : login({ mobile, password });
-    if (r.error) setError(r.error);
+    setBusy(true);
+    try {
+      const r = mode === "signup" ? await signup({ name, mobile, password }) : await login({ mobile, password });
+      if (r.error) setError(r.error);
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -66,9 +72,10 @@ function AuthForm() {
         {error && <p className="text-xs text-red-600 bg-red-50 rounded-lg px-3 py-2">{error}</p>}
         <button
           type="submit"
-          className="w-full py-3 bg-[#16a34a] hover:bg-[#15803d] text-white rounded-xl text-sm font-bold transition-colors"
+          disabled={busy}
+          className="w-full py-3 bg-[#16a34a] hover:bg-[#15803d] text-white rounded-xl text-sm font-bold transition-colors disabled:opacity-60"
         >
-          {mode === "signup" ? "Account Banao" : "Sign In"}
+          {busy ? "Please ruko..." : mode === "signup" ? "Account Banao" : "Sign In"}
         </button>
       </form>
     </div>

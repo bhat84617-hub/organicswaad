@@ -19,8 +19,17 @@ function write(key, val) {
   localStorage.setItem(key, JSON.stringify(val));
 }
 
+// Password kabhi plain text me mat rako — SHA-256 hash banake store karo.
+async function hashPassword(password, salt) {
+  const data = new TextEncoder().encode(`${salt}:${password}`);
+  const buf = await crypto.subtle.digest("SHA-256", data);
+  return Array.from(new Uint8Array(buf))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+}
+
 // ---------- Auth ----------
-export function signupUser({ name, mobile, password }) {
+export async function signupUser({ name, mobile, password }) {
   const cleanMobile = String(mobile || "").trim();
   if (!/^[6-9]\d{9}$/.test(cleanMobile)) {
     return { error: "Sahi 10-digit mobile number dalo." };
@@ -31,19 +40,29 @@ export function signupUser({ name, mobile, password }) {
   if (users.find((u) => u.mobile === cleanMobile)) {
     return { error: "Is number se account pehle se hai. Sign in karo." };
   }
-  const user = { name: name.trim(), mobile: cleanMobile, password };
+  const passwordHash = await hashPassword(password, cleanMobile);
+  const user = { name: name.trim(), mobile: cleanMobile, passwordHash };
   users.push(user);
   write(USERS_KEY, users);
   write(SESSION_KEY, { mobile: cleanMobile });
   return { user: { name: user.name, mobile: user.mobile } };
 }
 
-export function loginUser({ mobile, password }) {
+export async function loginUser({ mobile, password }) {
   const cleanMobile = String(mobile || "").trim();
   const users = read(USERS_KEY, []);
   const u = users.find((x) => x.mobile === cleanMobile);
   if (!u) return { error: "Account nahi mila. Pehle sign up karo." };
-  if (u.password !== password) return { error: "Password galat hai." };
+  if (u.passwordHash) {
+    const inputHash = await hashPassword(password, cleanMobile);
+    if (inputHash !== u.passwordHash) return { error: "Password galat hai." };
+  } else if (u.password !== password) {
+    return { error: "Password galat hai." };
+  } else {
+    u.passwordHash = await hashPassword(password, cleanMobile);
+    delete u.password;
+    write(USERS_KEY, users);
+  }
   write(SESSION_KEY, { mobile: u.mobile });
   return { user: { name: u.name, mobile: u.mobile } };
 }
@@ -83,6 +102,39 @@ export function createOrder({ items, total, name, mobile, address, pincode, paym
 export function getOrder(id) {
   const orders = read(ORDERS_KEY, []);
   return orders.find((o) => o.id.toUpperCase() === String(id || "").trim().toUpperCase()) || null;
+}
+
+// Order ko WhatsApp bot server par bhejo (owner ko notification chalega).
+// Fire-and-forget: agar bot down hai ya URL set nahi hai, checkout fail nahi hoga.
+export async function forwardOrder(order) {
+  const base =
+    import.meta.env.VITE_BOT_API_URL ||
+    (import.meta.env.DEV ? "http://localhost:3001" : "");
+  if (!base) return { skipped: true };
+  const ctl = new AbortController();
+  const timer = setTimeout(() => ctl.abort(), 8000);
+  try {
+    const res = await fetch(`${base.replace(/\/+$/, "")}/api/orders`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: order.id,
+        items: order.items,
+        total: order.total,
+        name: order.name,
+        mobile: order.mobile,
+        address: order.address,
+        pincode: order.pincode,
+        payment: order.payment,
+      }),
+      signal: ctl.signal,
+    });
+    return { ok: res.ok, status: res.status };
+  } catch {
+    return { ok: false };
+  } finally {
+    clearTimeout(timer);
+  }
 }
 
 export function myOrders(mobile) {

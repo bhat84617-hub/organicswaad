@@ -1,10 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 const CartContext = createContext();
+const CART_KEY = "os_cart";
+
+function loadCart() {
+  try {
+    const v = localStorage.getItem(CART_KEY);
+    const parsed = v ? JSON.parse(v) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
 
 export function CartProvider({ children }) {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(loadCart);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(CART_KEY, JSON.stringify(items));
+    } catch {
+      /* quota/private mode — ignore */
+    }
+  }, [items]);
 
   const addItem = (product, qty = 1) => {
     setItems((prev) => {

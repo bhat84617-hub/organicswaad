@@ -17,12 +17,10 @@ import {
 } from "lucide-react";
 
 const departments = [
-  { name: "Powdered Spices", slug: "single-spice", icon: "🌿", sub: ["Haldi Powder", "Mirchi Powder", "Dhaniya Powder", "Jeera Powder"] },
-  { name: "Blended Spices", slug: "blend", icon: "🍛", sub: ["Garam Masala", "Kitchen King", "Chaat Masala", "Biryani Masala"] },
-  { name: "Whole Spices", slug: "single-spice", icon: "🌰", sub: ["Jeera Whole", "Dhaniya Whole", "Laung", "Elaichi"] },
-  { name: "Combo Packs", slug: "combo", icon: "🎁", sub: ["Family Pack", "Starter Pack", "Premium Gift Box"] },
-  { name: "Seeds & Herbs", slug: "single-spice", icon: "🌱", sub: ["Flax Seeds", "Sesame", "Herbs"] },
-  { name: "Offers", slug: "combo", icon: "🔥", sub: ["30% Off Combos", "Free Delivery"] },
+  { name: "Powdered Spices", slug: "single-spice", icon: "🌿", sub: ["Haldi Powder", "Lal Mirch Powder", "Dhaniya Powder", "Jeera Powder"] },
+  { name: "Blended Spices", slug: "blend", icon: "🍛", sub: ["Organic Garam Masala"] },
+  { name: "Combo Packs", slug: "combo", icon: "🎁", sub: ["Complete Organic Combo", "Free Delivery"] },
+  { name: "Offers", slug: "combo", icon: "🔥", sub: ["Combo me 25%+ Off", "Free Delivery ₹999+"] },
 ];
 
 function normalize(str) {
@@ -133,8 +131,6 @@ export default function Header() {
           </div>
           <div className="flex items-center gap-4">
             <Link to="/track-order" className="hover:text-white transition-colors">Track Order</Link>
-            <a href="#" className="hover:text-white transition-colors hidden lg:inline">USD / $</a>
-            <a href="#" className="hover:text-white transition-colors hidden lg:inline">English</a>
           </div>
         </div>
       </div>
@@ -193,7 +189,6 @@ export default function Header() {
                   <option>All Categories</option>
                   <option>Powdered Spices</option>
                   <option>Blended Spices</option>
-                  <option>Whole Spices</option>
                   <option>Combo Packs</option>
                 </select>
                 <ChevronDown className="w-3 h-3 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500" />

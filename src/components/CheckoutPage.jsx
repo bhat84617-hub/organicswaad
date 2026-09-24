@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
-import { createOrder, getOrder } from "../store";
+import { createOrder, getOrder, forwardOrder } from "../store";
 
 function Field({ label, ...props }) {
   return (
@@ -53,6 +53,7 @@ export function CheckoutPage() {
     const order = createOrder({
       items, total: grandTotal, name, mobile, address, pincode, payment,
     });
+    forwardOrder(order);
     clearCart();
     navigate(`/order-success/${order.id}`);
   };

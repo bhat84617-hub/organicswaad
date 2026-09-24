@@ -10,14 +10,14 @@ export function AuthProvider({ children }) {
     setUser(currentUser());
   }, []);
 
-  const signup = (data) => {
-    const r = signupUser(data);
+  const signup = async (data) => {
+    const r = await signupUser(data);
     if (r.user) setUser(r.user);
     return r;
   };
 
-  const login = (data) => {
-    const r = loginUser(data);
+  const login = async (data) => {
+    const r = await loginUser(data);
     if (r.user) setUser(r.user);
     return r;
   };
