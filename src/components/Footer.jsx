@@ -97,10 +97,13 @@ export default function Footer() {
                 All Products
               </Link>
               <Link to="/terms" className="block hover:text-white transition-colors">
-                Terms of Use
+                Terms of Service
               </Link>
               <Link to="/refunds" className="block hover:text-white transition-colors">
                 Returns and Refunds
+              </Link>
+              <Link to="/privacy-policy" className="block hover:text-white transition-colors">
+                Privacy Policy
               </Link>
             </nav>
           </div>
@@ -141,11 +144,14 @@ export default function Footer() {
         <div className="max-w-[1440px] mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-xs text-[#777]">
           <p>Copyright © 2026 {siteConfig.brand.name}. All Rights Reserved.</p>
           <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-white">
-              Privacy
-            </a>
+            <Link to="/privacy-policy" className="hover:text-white">
+              Privacy Policy
+            </Link>
             <Link to="/terms" className="hover:text-white">
               Terms
+            </Link>
+            <Link to="/refunds" className="hover:text-white">
+              Refunds
             </Link>
             <span>Made with ❤️ in India</span>
           </div>

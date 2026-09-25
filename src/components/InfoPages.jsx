@@ -2,7 +2,15 @@ import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { getOrder, orderStatus, formatDate } from "../store";
 
-function InfoLayout({ title, subtitle, children }) {
+export function Ph({ children }) {
+  return (
+    <span className="text-[11px] font-bold uppercase tracking-wide bg-amber-100 text-amber-800 border border-amber-200 rounded px-1.5 py-0.5 whitespace-nowrap">
+      {children}
+    </span>
+  );
+}
+
+export function InfoLayout({ title, subtitle, children }) {
   return (
     <section className="pt-[124px] lg:pt-[148px] bg-gray-50 min-h-screen">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 py-10">
@@ -70,22 +78,90 @@ export function ShippingPage() {
 
 export function TermsPage() {
   return (
-    <InfoLayout title="Terms of Use" subtitle="Website use karne ke simple niyam.">
+    <InfoLayout title="Terms of Service" subtitle="Website use karne ke niyam — seedhe shabdon me.">
+      <p className="text-xs text-gray-400">
+        Effective date: <Ph>["DD Month YYYY" — TO BE ADDED]</Ph> · Last updated: <Ph>["DD Month YYYY" — TO BE ADDED]</Ph>
+      </p>
+
+      <Point
+        heading="Acceptance"
+        text="Is website (www.organicswaad.online) ko use karke aap in Terms se sehmat ho jaate ho. Agar sehmat nahi ho to website use mat karo. Zaruri ho to hum terms badal sakte hai — jaari rakhna nayi terms ka accept hona hai."
+      />
+
+      <Point
+        heading="Eligibility"
+        text="Website account aur order ke liye aapko kam se kam 18 saal ka hona chahiye (ya guardian ki madad se). Galat jaankari de kar account banane ka adhikaar nahi hai."
+      />
+
+      <Point
+        heading="Account ki zimmedari"
+        text="Apna mobile number, password aur login details khud sambhalo. Password ka hash (plain password nahi) browser me save hota hai. Tumhare device se hui kisi bhi activity ki zimmedari tumhari hogi — agar lagta hai koi access kar raha hai to password badlo aur support ko batao."
+      />
+
       <Point
         heading="Products"
-        text="Saare products 100% organic masale hain. Photos aur wazan (pack size) product page par clearly mention hai. Natural product hone ki wajah se rang aur khushboo me halka farak ho sakta hai — ye quality ki nishani hai."
+        text="Saare products 100% organic masale hain. Photos aur wazan (pack size) product page par clearly mention hai. Natural product hone ki wajah se rang aur khushboo me halka farak ho sakta hai — ye quality ki nishani hai. Stock khatam hone par order cancel karne ka adhikaar humare paas hai (paisa wapas milta hai)."
       />
+
       <Point
         heading="Pricing aur payment"
-        text="Saari keemtein INR (₹) me hain. Payment UPI, cards ya Cash on Delivery se kar sakte ho. Order confirm hone ke baad price change nahi hota."
+        text="Saari keemtein INR (₹) me hain. Payment Cash on Delivery (COD) ya UPI se hota hai — payment ka intezam order confirm karte waqt hota hai. Website par card number/bank details nahi liye jaate. Order confirm hone ke baad price change nahi hota."
       />
+
       <Point
-        heading="Order cancellation"
-        text="Dispatch se pehle tak order cancel kar sakte ho — WhatsApp (+91-9355701335) ya call par bas order number bata do. Dispatch ke baad cancellation possible nahi hai."
+        heading="Orders aur cancellation"
+        text="Order WhatsApp ya call par confirm kiya jata hai. Dispatch se pehle tak order cancel kar sakte ho — WhatsApp (+91-9355701335) ya call par order number bata do. Dispatch ke baad cancellation possible nahi hai. Galat/fake orders, spam ya reselling ke liye order cancel karne ka adhikaar humare paas surakshit hai."
       />
+
       <Point
-        heading="Misuse"
-        text="Website ka galat use (fake orders, spam) karne par order cancel karne ka adhikaar hamare paas surakshit hai."
+        heading="Shipping aur returns"
+        text={
+          <>
+            Delivery ka tareeka aur waqt: <Link to="/shipping" className="text-[#16a34a] font-semibold hover:underline">Shipping Policy</Link> page dekho. Returns, refund aur unki conditions: <Link to="/refunds" className="text-[#16a34a] font-semibold hover:underline">Refund &amp; Cancellation Policy</Link> page dekho. Ye dono in Terms ka hissa hai.
+          </>
+        }
+      />
+
+      <Point
+        heading="Intellectual property"
+        text="Website ka design, logo, naam 'Organic Swaad', photos, text aur sabhi content humara/humare licensors ka maalik hai. Sirf personal, non-commercial istemal ki ijazat hai — bina likhit ijazat ke copy, redistribute ya resell karna mana hai."
+      />
+
+      <Point
+        heading="Prohibited use"
+        text="Nahi karna: fake/manipulated orders, spam, website ka access automate/scrape karna (scraping), kisi ko nuksaan pahunchana, galat jaankari dena, kanoon todna, ya website ke technical security test karna bina ijazat ke."
+      />
+
+      <Point
+        heading="Disclaimer"
+        text="Website 'jaisa hai' (as-is) di jaati hai — koi guarantee nahi ki kabhi ruke/error aaye. Masale natural food products hain; medical/falahi daave nahi kiye jaate (khaane se judi zaruri baatein product labels par dekho). Jitni kanoon ijazat de, utni hi zimmedari hum leti hai."
+      />
+
+      <Point
+        heading="Limitation of liability"
+        text={
+          <>
+            Website ya products se judi kisi bhi asal/anshan nuksaan ki soorat me humari zimmedari aapki order value (jo aapne pay ki) tak seemit hogi — jitni kanoon ijazat de. <Ph>[LEGAL REVIEW — clause to be reviewed by lawyer]</Ph>
+          </>
+        }
+      />
+
+      <Point
+        heading="Governing law aur changes"
+        text={
+          <>
+            Ye Terms Bharat ke kanoon ke mutabik chalengi; koi vivaad <Ph>["JURISDICTION — sheher/Rajya ke nyayalay TO BE ADDED]</Ph> me hoga. Terms me badlav website par nayi date ke saath dikhega.
+          </>
+        }
+      />
+
+      <Point
+        heading="Contact"
+        text={
+          <>
+            In Terms se judi sawaal: <a href="mailto:organicswaad1@gmail.com" className="text-[#16a34a] font-semibold hover:underline">organicswaad1@gmail.com</a> ya WhatsApp/Call <a href="tel:+919355701335" className="text-[#16a34a] font-semibold hover:underline">+91-9355701335</a>. Business name &amp; address: <Ph>["LEGAL BUSINESS NAME AND ADDRESS — TO BE ADDED]</Ph>
+          </>
+        }
       />
     </InfoLayout>
   );
@@ -93,18 +169,62 @@ export function TermsPage() {
 
 export function RefundsPage() {
   return (
-    <InfoLayout title="Returns and Refunds" subtitle="Seedhi aur imaandaar policy — padh lo, confusion khatam.">
+    <InfoLayout title="Refund and Cancellation Policy" subtitle="Seedhi aur imaandaar policy — padh lo, confusion khatam.">
+      <p className="text-xs text-gray-400">
+        Effective date: <Ph>["DD Month YYYY" — TO BE ADDED]</Ph> · Last updated: <Ph>["DD Month YYYY" — TO BE ADDED]</Ph>
+      </p>
+
+      <Point
+        heading="Order cancellation"
+        text="Dispatch se pehle tak order free cancel ho jata hai — WhatsApp (+91-9355701335) ya call par bas order number bata do. Dispatch ke baad cancellation possible nahi hai (product aapko bheja ja chuka hai)."
+      />
+
+      <Point
+        heading="Return eligibility"
+        text="Return tabhi hoga jab product galat ho, damaged ho ya description se alag ho. Aapke liye zaruri: order number, parcel ka photo (delivery waqt se pehle/andar kholte waqt), aur product ka photo — 48 hours ke andar WhatsApp par bhejo."
+      />
+
       <Point
         heading="Khula packet return nahi hoga"
         text="Food safety ki wajah se seal khulne / packet open hone ke baad return ya refund possible nahi hai. Isliye order karte waqt pack size dhyaan se chuno."
       />
+
       <Point
         heading="Galat ya damaged product aaye to?"
         text="Agar galat item aaye, seal-damaged packet mile ya transit me nuksaan ho — to 48 hours ke andar WhatsApp (+91-9355701335) par order number aur photo bhejo. Verification ke baad replacement ya refund milega."
       />
+
       <Point
         heading="Refund kaise milega"
-        text="Approved refund 5–7 working days me wapas ho jata hai — online payment par same source me, COD order par UPI/bank transfer se."
+        text="Approved refund 5–7 working days me wapas ho jata hai — online payment par same source me, COD order par UPI/bank transfer se. Refund ka status hum WhatsApp ya email par batate hai."
+      />
+
+      <Point
+        heading="Non-refundable cheezein"
+        text="Khule/seal-open food items (hygiene), gift/custom orders, aur discount-bought items jinki kharabi ki shikayat verify na ho — ye refund ke liye eligible nahi hain. Ye list zaruri hai kyunki food products return hone par dobara sell nahi kiye ja sakte."
+      />
+
+      <Point
+        heading="Exchange"
+        text="Galat/damaged product ki jagah replacement (same item sahi pack me, ya galat item sahi item se) bhi mil sakta hai — aapko choice hai: refund ya replacement."
+      />
+
+      <Point
+        heading="Refund nahi mila to?"
+        text={
+          <>
+            Agar 5–7 working days ke baad bhi refund na mile — seedha WhatsApp ya call karo (+91-9355701335), order number ke saath. Escalation: <Ph>["Escalation contact/grievance officer — TO BE ADDED]</Ph>
+          </>
+        }
+      />
+
+      <Point
+        heading="Contact"
+        text={
+          <>
+            Refund/cancellation sawaal: <a href="mailto:organicswaad1@gmail.com" className="text-[#16a34a] font-semibold hover:underline">organicswaad1@gmail.com</a> · WhatsApp/Call: <a href="tel:+919355701335" className="text-[#16a34a] font-semibold hover:underline">+91-9355701335</a> · Details: <Link to="/terms" className="text-[#16a34a] font-semibold hover:underline">Terms</Link> | <Link to="/shipping" className="text-[#16a34a] font-semibold hover:underline">Shipping</Link> | <Link to="/privacy-policy" className="text-[#16a34a] font-semibold hover:underline">Privacy Policy</Link>
+          </>
+        }
       />
     </InfoLayout>
   );

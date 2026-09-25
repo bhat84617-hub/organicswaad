@@ -15,6 +15,7 @@ import ProductDetail from "./components/ProductDetail";
 import Footer from "./components/Footer";
 import CartSidebar from "./components/CartSidebar";
 import { ShippingPage, TermsPage, RefundsPage, TrackOrderPage } from "./components/InfoPages";
+import PrivacyPolicyPage from "./components/PrivacyPolicyPage";
 import AccountPage from "./components/AccountPage";
 import { CheckoutPage, OrderSuccessPage } from "./components/CheckoutPage";
 
@@ -56,6 +57,29 @@ function Home() {
   );
 }
 
+const DEFAULT_TITLE = "Organic Swaad | 100% Pure Organic Indian Spices";
+const ROUTE_TITLES = {
+  "/": DEFAULT_TITLE,
+  "/products": "All Products | Organic Swaad",
+  "/shipping": "Shipping Policy | Organic Swaad",
+  "/terms": "Terms of Service | Organic Swaad",
+  "/refunds": "Refund and Cancellation Policy | Organic Swaad",
+  "/privacy-policy": "Privacy Policy | Organic Swaad",
+  "/track-order": "Track Order | Organic Swaad",
+  "/account": "My Account | Organic Swaad",
+  "/checkout": "Checkout | Organic Swaad",
+};
+
+function PageTitle() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    document.title =
+      ROUTE_TITLES[pathname] ||
+      (pathname.startsWith("/product/") ? "Product | Organic Swaad" : DEFAULT_TITLE);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   return (
     <AuthProvider>
@@ -63,6 +87,7 @@ function App() {
       <CartProvider>
         <BrowserRouter>
         <ScrollToTop />
+        <PageTitle />
         <div className="min-h-screen bg-white">
           <Header />
           <main>
@@ -73,6 +98,7 @@ function App() {
               <Route path="/shipping" element={<ShippingPage />} />
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/refunds" element={<RefundsPage />} />
+              <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/track-order" element={<TrackOrderPage />} />
               <Route path="/account" element={<AccountPage />} />
               <Route path="/checkout" element={<CheckoutPage />} />
