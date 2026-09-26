@@ -10,7 +10,7 @@ const baseHeaders = {
 }
 
 const prodCsp =
-  "default-src 'self'; script-src 'self' https://accounts.google.com https://apis.google.com https://www.gstatic.com; style-src 'self' https://accounts.google.com; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://*.googleusercontent.com; connect-src 'self' https://accounts.google.com https://*.googleapis.com https://apis.google.com; frame-src 'self' https://accounts.google.com https://www.google.com https://www.gstatic.com https://apis.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  "default-src 'self'; script-src 'self' https://accounts.google.com https://apis.google.com https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://accounts.google.com; style-src-attr 'unsafe-inline'; font-src 'self' data:; img-src 'self' data: blob: https://*.googleusercontent.com; connect-src 'self' https://accounts.google.com https://*.googleapis.com https://apis.google.com; frame-src 'self' https://accounts.google.com https://www.google.com https://www.gstatic.com https://apis.google.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
 
 // Dev me HMR websocket + React Refresh inline preamble chahiye
 const devCsp =

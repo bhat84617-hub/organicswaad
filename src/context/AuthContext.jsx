@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { signupUser, loginUser, logoutUser, currentUser, saveGoogleSession } from "../store";
-import { parseGoogleCredential } from "../googleAuth";
+import { parseGoogleCredential, signInWithGoogleOAuth } from "../googleAuth";
 
 const AuthContext = createContext();
 
@@ -45,6 +45,16 @@ export function AuthProvider({ children }) {
     }
   }, []);
 
+  const googleSignIn = useCallback(async () => {
+    setGoogleBusy(true);
+    setRedirectError("");
+    try {
+      await signInWithGoogleOAuth(handleGoogleCredential, (msg) => setRedirectError(msg));
+    } finally {
+      setGoogleBusy(false);
+    }
+  }, [handleGoogleCredential]);
+
   const logout = () => {
     logoutUser();
     setUser(null);
@@ -52,7 +62,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
-      value={{ user, signup, login, logout, handleGoogleCredential, googleBusy, redirectError }}
+      value={{ user, signup, login, logout, handleGoogleCredential, googleSignIn, googleBusy, redirectError }}
     >
       {children}
     </AuthContext.Provider>
