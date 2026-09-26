@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
-import { products } from "../data";
+import { getProducts } from "../adminStore";
 import { ShoppingCart, ArrowLeft, Plus, Minus, Check, Truck, Shield, Leaf, MessageCircle } from "lucide-react";
 
 export default function ProductDetail() {
   const { slug } = useParams();
-  const product = products.find((p) => p.slug === slug);
+  const product = getProducts().find((p) => p.slug === slug);
   const { addItem, items } = useCart();
   const [qty, setQty] = useState(1);
 
@@ -22,7 +22,8 @@ export default function ProductDetail() {
   }
 
   const inCart = items.some((i) => i.id === product.id);
-  const discount = Math.round((1 - product.price / product.originalPrice) * 100);
+  const hasMrp = Number(product.originalPrice) > Number(product.price);
+  const discount = hasMrp ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
   const total = product.price * qty;
 
   const whatsappUrl = `https://wa.me/919355701335?text=${encodeURIComponent(
@@ -42,9 +43,11 @@ export default function ProductDetail() {
 
         <div className="grid md:grid-cols-2 gap-10 lg:gap-16 items-start">
           <div className="relative">
-            <div className="absolute top-3 right-3 z-10 bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
-              {discount}% OFF
-            </div>
+            {hasMrp && (
+              <div className="absolute top-3 right-3 z-10 bg-green-600 text-white text-sm font-bold px-4 py-1.5 rounded-full shadow-md">
+                {discount}% OFF
+              </div>
+            )}
             <div className="bg-gradient-to-br from-gray-50 to-green-50/30 rounded-3xl border border-gray-100 p-8 sm:p-12 flex items-center justify-center overflow-hidden">
             {product.image ? (
               <img
@@ -72,10 +75,12 @@ export default function ProductDetail() {
 
             <div className="flex items-baseline gap-3">
               <span className="text-4xl font-bold text-green-700">₹{product.price}</span>
-              <span className="text-lg text-gray-400 line-through">₹{product.originalPrice}</span>
-              <span className="bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full">
-                Save ₹{product.originalPrice - product.price}
-              </span>
+              {hasMrp && <span className="text-lg text-gray-400 line-through">₹{product.originalPrice}</span>}
+              {hasMrp && (
+                <span className="bg-green-100 text-green-700 text-sm font-bold px-3 py-1 rounded-full">
+                  Save ₹{product.originalPrice - product.price}
+                </span>
+              )}
             </div>
 
             <p className="text-gray-600 leading-relaxed text-[15px]">{product.description}</p>

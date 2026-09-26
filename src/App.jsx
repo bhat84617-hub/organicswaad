@@ -17,6 +17,7 @@ import CartSidebar from "./components/CartSidebar";
 import { ShippingPage, TermsPage, RefundsPage, TrackOrderPage } from "./components/InfoPages";
 import PrivacyPolicyPage from "./components/PrivacyPolicyPage";
 import AccountPage from "./components/AccountPage";
+import AdminPanel from "./components/AdminPanel";
 import { CheckoutPage, OrderSuccessPage } from "./components/CheckoutPage";
 
 function ScrollToTop() {
@@ -67,6 +68,7 @@ const ROUTE_TITLES = {
   "/privacy-policy": "Privacy Policy | Organic Swaad",
   "/track-order": "Track Order | Organic Swaad",
   "/account": "My Account | Organic Swaad",
+  "/admin": "Admin Panel | Organic Swaad",
   "/checkout": "Checkout | Organic Swaad",
 };
 
@@ -101,6 +103,7 @@ function App() {
               <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
               <Route path="/track-order" element={<TrackOrderPage />} />
               <Route path="/account" element={<AccountPage />} />
+              <Route path="/admin" element={<AdminPanel />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order-success/:id" element={<OrderSuccessPage />} />
             </Routes>

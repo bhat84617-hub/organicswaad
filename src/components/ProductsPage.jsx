@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { products, categories } from "../data";
+import { categories } from "../data";
+import { getProducts } from "../adminStore";
 import ProductCard from "./ProductCard";
 
 function normalize(str) {
@@ -14,7 +15,7 @@ export default function ProductsPage() {
   const urlCategory = searchParams.get("category") || "";
 
   const filtered = useMemo(() => {
-    let list = products;
+    let list = getProducts();
     if (urlCategory) {
       const catMap = { "single-spice": "Single Spice", blend: "Blend", combo: "Combo" };
       const mapped = catMap[urlCategory] || urlCategory;

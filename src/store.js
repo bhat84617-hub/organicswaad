@@ -153,6 +153,15 @@ export function myOrders(mobile) {
 const STAGES = ["Order Placed", "Packed", "Shipped", "Out for Delivery", "Delivered"];
 
 export function orderStatus(order) {
+  // Admin ne manual status lagaya ho to wahi dikhao
+  try {
+    const ov = JSON.parse(localStorage.getItem("os_order_status") || "{}")[order.id];
+    if (ov && ov.cancelled) return { stage: "Cancelled", index: -1, stages: STAGES, cancelled: true };
+    if (ov && typeof ov.index === "number") {
+      const i = Math.max(0, Math.min(STAGES.length - 1, ov.index));
+      return { stage: STAGES[i], index: i, stages: STAGES, manual: true };
+    }
+  } catch (e) {}
   const hrs = (Date.now() - order.placedAt) / 36e5;
   let index = 0;
   if (hrs >= 120) index = 4;

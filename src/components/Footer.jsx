@@ -210,6 +210,9 @@ export default function Footer() {
             <Link to="/refunds" className="hover:text-white">
               Refunds
             </Link>
+            <Link to="/admin" className="hover:text-white">
+              Admin
+            </Link>
             <span>Made with ❤️ in India</span>
           </div>
         </div>

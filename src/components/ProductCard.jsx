@@ -11,8 +11,9 @@ export default function ProductCard({ product }) {
   const liked = isLiked(product.id);
 
   const inCart = items.some((i) => i.id === product.id);
-  const discount = Math.round((1 - product.price / product.originalPrice) * 100);
-  const saveAmount = product.originalPrice - product.price;
+  const hasMrp = Number(product.originalPrice) > Number(product.price);
+  const discount = hasMrp ? Math.round((1 - product.price / product.originalPrice) * 100) : 0;
+  const saveAmount = hasMrp ? product.originalPrice - product.price : 0;
 
   const whatsappUrl = `https://wa.me/919355701335?text=${encodeURIComponent(
     `Hi Organic Swaad! 👋\n\nMujhe yeh order karna hai:\n\n*${product.name}* (${product.hindiName})\nQuantity: ${qty}\nPrice: ₹${product.price} x ${qty} = ₹${product.price * qty}\nWeight: ${product.weight}\n\nKripya delivery details bhejen. 🙏`
@@ -81,7 +82,7 @@ export default function ProductCard({ product }) {
         {/* Price - XStore */}
         <div className="flex items-baseline gap-2 mt-2">
           <span className="text-[15px] font-bold text-[#1a1a1a]">₹{product.price}</span>
-          <span className="text-xs text-gray-400 line-through">₹{product.originalPrice}</span>
+          {hasMrp && <span className="text-xs text-gray-400 line-through">₹{product.originalPrice}</span>}
         </div>
 
         {/* Weight */}

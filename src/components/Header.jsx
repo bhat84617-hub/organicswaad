@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
-import { products } from "../data";
+import { getProducts } from "../adminStore";
 import {
   ShoppingCart,
   Menu,
@@ -71,7 +71,7 @@ export default function Header() {
   };
 
   const filtered = searchQ.trim().length >= 1
-    ? products.filter((p) => {
+    ? getProducts().filter((p) => {
         const q = searchQ.toLowerCase().trim();
         const qNorm = normalize(q);
         const name = p.name.toLowerCase();
