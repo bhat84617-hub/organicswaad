@@ -1,8 +1,49 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { siteConfig } from "../data";
 import { MapPin, Phone, Mail } from "lucide-react";
 
+const NEWS_KEY = "os_newsletter";
+
 export default function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [email, setEmail] = useState("");
+  const [newsMsg, setNewsMsg] = useState({ type: "", text: "" });
+
+  const goSection = (id) => {
+    const doScroll = () => {
+      const el = document.getElementById(id);
+      if (el) {
+        const y = el.getBoundingClientRect().top + window.scrollY - 155;
+        window.scrollTo({ top: y, behavior: "smooth" });
+      }
+    };
+    if (location.pathname !== "/") {
+      navigate(`/#${id}`);
+      setTimeout(doScroll, 350);
+    } else {
+      doScroll();
+    }
+  };
+
+  const subscribe = (e) => {
+    e.preventDefault();
+    const v = email.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) {
+      setNewsMsg({ type: "error", text: "Sahi email address dalo." });
+      return;
+    }
+    try {
+      const list = JSON.parse(localStorage.getItem(NEWS_KEY) || "[]");
+      if (!list.includes(v)) {
+        list.push(v);
+        localStorage.setItem(NEWS_KEY, JSON.stringify(list));
+      }
+    } catch (err) {}
+    setEmail("");
+    setNewsMsg({ type: "ok", text: "Subscribed! Offers sabse pehle aapko milenge." });
+  };
   return (
     <footer className="bg-[#1a1a1a] text-[#a8a8a8]">
       {/* Newsletter - XStore */}
@@ -15,15 +56,31 @@ export default function Footer() {
               <p className="text-xs text-[#a8a8a8]">Get updates by subscribe our weekly newsletter</p>
             </div>
           </div>
-          <form onSubmit={(e) => e.preventDefault()} className="flex w-full lg:w-auto max-w-md flex-1 lg:ml-8">
-            <input placeholder="Your email address..." className="flex-1 h-10 px-4 bg-white text-sm text-[#1a1a1a] rounded-l outline-none" />
+          <form onSubmit={subscribe} className="flex w-full lg:w-auto max-w-md flex-1 lg:ml-8">
+            <input
+              value={email}
+              onChange={(e) => { setEmail(e.target.value); setNewsMsg({ type: "", text: "" }); }}
+              placeholder="Your email address..."
+              type="text"
+              inputMode="email"
+              className="flex-1 h-10 px-4 bg-white text-sm text-[#1a1a1a] rounded-l outline-none"
+            />
             <button className="bg-[#16a34a] hover:bg-[#15803d] text-white px-6 text-xs font-bold tracking-widest rounded-r">SUBSCRIBE</button>
           </form>
+          {newsMsg.text && (
+            <p className={`text-xs w-full lg:w-auto ${newsMsg.type === "ok" ? "text-green-400" : "text-red-400"}`}>
+              {newsMsg.text}
+            </p>
+          )}
           <div className="flex items-center gap-2 text-xs">
             <span className="hidden lg:inline text-[#a8a8a8]">Follow:</span>
-            <a href="#" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">FB</a>
-            <a href="#" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">IG</a>
-            <a href="https://wa.me/919355701335" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">WA</a>
+            <a href="https://wa.me/919355701335" target="_blank" rel="noopener noreferrer" title="WhatsApp" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white text-xs transition-colors">WA</a>
+            <a href="tel:+919355701335" title="Call karo" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white transition-colors">
+              <Phone className="w-3.5 h-3.5" />
+            </a>
+            <a href="mailto:organicswaad1@gmail.com" title="Email karo" className="w-8 h-8 bg-[#2a2a2a] hover:bg-[#16a34a] rounded-full flex items-center justify-center text-white transition-colors">
+              <Mail className="w-3.5 h-3.5" />
+            </a>
           </div>
         </div>
       </div>
@@ -112,15 +169,15 @@ export default function Footer() {
           <div>
             <h4 className="font-bold text-white text-xs mb-4 uppercase tracking-widest">Customer Service</h4>
             <nav className="space-y-2 text-xs">
-              <a href="#why-us" className="block hover:text-white transition-colors">
+              <button onClick={() => goSection("why-us")} className="block hover:text-white transition-colors">
                 Why Us
-              </a>
-              <a href="#testimonials" className="block hover:text-white transition-colors">
+              </button>
+              <button onClick={() => goSection("testimonials")} className="block hover:text-white transition-colors">
                 Reviews
-              </a>
-              <a href="#contact" className="block hover:text-white transition-colors">
+              </button>
+              <button onClick={() => goSection("contact")} className="block hover:text-white transition-colors">
                 Contact Us
-              </a>
+              </button>
               <Link to="/track-order" className="block hover:text-white transition-colors">
                 Track Order
               </Link>

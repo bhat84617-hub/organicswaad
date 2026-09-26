@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { getOrder, orderStatus, formatDate } from "../store";
+import { getOrder, myOrders, currentUser, orderStatus, formatDate } from "../store";
 
 export function Ph({ children }) {
   return (
@@ -242,8 +242,44 @@ export function TrackOrderPage() {
     setSearched(orderId);
   };
 
+  const me = currentUser();
+  const mine = me && me.mobile ? myOrders(me.mobile) : [];
+
   return (
     <InfoLayout title="Track Order" subtitle="Apni Order ID dalo — status yahin dikhega.">
+      {mine.length > 0 && (
+        <div>
+          <h3 className="font-semibold text-[#1a1a1a] mb-2">Mere Orders</h3>
+          <div className="space-y-2">
+            {mine.map((o) => {
+              const st = orderStatus(o);
+              return (
+                <button
+                  key={o.id}
+                  type="button"
+                  onClick={() => { setOrderId(o.id); setSearched(o.id); }}
+                  className={`w-full flex items-center justify-between gap-3 rounded-xl border px-4 py-3 text-left transition-colors ${
+                    searched === o.id ? "border-[#16a34a] bg-green-50" : "border-gray-200 hover:border-[#16a34a] hover:bg-gray-50"
+                  }`}
+                >
+                  <span>
+                    <span className="block font-bold text-[#1a1a1a]">{o.id}</span>
+                    <span className="block text-xs text-gray-500">{formatDate(o.placedAt)} · ₹{o.total}</span>
+                  </span>
+                  <span className="text-[11px] font-bold text-[#16a34a] bg-green-100 px-3 py-1 rounded-full whitespace-nowrap">
+                    {st.stage}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="flex items-center gap-3 my-5">
+            <div className="h-px flex-1 bg-gray-200" />
+            <span className="text-xs text-gray-400">ya ID se track karo</span>
+            <div className="h-px flex-1 bg-gray-200" />
+          </div>
+        </div>
+      )}
       <form onSubmit={search} className="flex gap-2">
         <input
           value={orderId}
