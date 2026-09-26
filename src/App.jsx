@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { CartProvider } from "./context/CartContext";
 import { WishlistProvider } from "./context/WishlistContext";
@@ -58,6 +58,26 @@ function Home() {
   );
 }
 
+function NotFound() {
+  return (
+    <section className="min-h-screen bg-white pt-[136px] lg:pt-[158px] flex items-center justify-center px-4">
+      <div className="text-center max-w-sm">
+        <p className="text-6xl mb-4">🔍</p>
+        <h1 className="font-['Cormorant_Garamond'] text-3xl font-bold text-[#1a1a1a] mb-2">Page nahi mila</h1>
+        <p className="text-sm text-gray-500 mb-6">Ye link galat hai ya page hat gaya hai. Purana page khula ho to ek baar refresh kar lo.</p>
+        <div className="flex gap-2 justify-center">
+          <Link to="/" className="px-6 py-3 bg-[#16a34a] hover:bg-[#15803d] text-white rounded-xl text-sm font-bold transition-colors">
+            Home jao
+          </Link>
+          <button onClick={() => window.location.reload()} className="px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-sm font-bold transition-colors">
+            Refresh karo
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 const DEFAULT_TITLE = "Organic Swaad | 100% Pure Organic Indian Spices";
 const ROUTE_TITLES = {
   "/": DEFAULT_TITLE,
@@ -104,6 +124,7 @@ function App() {
               <Route path="/track-order" element={<TrackOrderPage />} />
               <Route path="/account" element={<AccountPage />} />
               <Route path="/admin" element={<AdminPanel />} />
+              <Route path="*" element={<NotFound />} />
               <Route path="/checkout" element={<CheckoutPage />} />
               <Route path="/order-success/:id" element={<OrderSuccessPage />} />
             </Routes>
